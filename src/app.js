@@ -81,6 +81,7 @@ btnLogout.addEventListener('click', () => {
     });
 })
 
+//iniciando con google 
 btnGoogle.addEventListener("click", () => {
 
   let provider = new firebase.auth.GoogleAuthProvider();

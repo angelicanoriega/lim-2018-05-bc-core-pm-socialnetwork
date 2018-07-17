@@ -1,3 +1,6 @@
 .contenedor-menu {
     display: none;
   }
+.hidden{
+  display: none;
+}

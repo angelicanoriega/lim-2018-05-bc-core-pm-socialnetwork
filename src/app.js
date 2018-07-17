@@ -7,15 +7,32 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 //Nombre, Apellido, email y pasword del registro
 const nameRegister = document.getElementById("name-register");
-const lastNameRegister = document.getElementById("lastName-register");
+const nickNameRegister = document.getElementById("nickName-register");
 const emailRegister = document.getElementById("email-register");
 const passwordRregister = document.getElementById("password-register");
+//botones de iniciar secion con google y facebook
+const btnGoogle = document.getElementById("google-SignIn");
+/* aun no se pone en uso const btnFacebook = document.getElementById("facebook-SignIn");*/
+//botones de ocutar y aparecer (iniciar secion  registrarse)
+const btnNewAccount = document.getElementById("newAccount-register");
+const btnReturn = document.getElementById("return");
 //varibles creadas para la visualizacion usando el css en html
 const login = document.getElementById("menu");
 const logout = document.getElementById("singIn-register");
-//botones de iniciar secion con google y facebook
-const btnGoogle = document.getElementById("google-SignIn");
-const btnFacebook = document.getElementById("facebook-SignIn");
+const register = document.getElementById("register");
+const singIn = document.getElementById("singIn");
+
+//ocultando y apareciondo el aria de inciar secion y registro
+btnNewAccount.addEventListener("click", () => {
+  register.removeAttribute("class"); 
+  singIn.setAttribute("class","hidden");
+})
+btnReturn.addEventListener("click",()=>{
+ register.setAttribute("class","hidden");
+ singIn.removeAttribute("class");
+
+})
+
 
 
 //confirma que el usuario esta logueando para que no tenga que volver a ingresar sus datos
@@ -100,3 +117,4 @@ btnGoogle.addEventListener("click", () => {
 
     });
 })
+

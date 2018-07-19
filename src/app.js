@@ -19,6 +19,7 @@ const btnReturn = document.getElementById("return");
 //varibles creadas para la visualizacion usando el css en html
 const login = document.getElementById("menu");
 const logout = document.getElementById("singIn-register");
+let userName= document.getElementById("user_name");
 const register = document.getElementById("register");
 const singIn = document.getElementById("singIn");
 
@@ -28,25 +29,47 @@ btnNewAccount.addEventListener("click", () => {
   singIn.setAttribute("class","hidden");
 })
 btnReturn.addEventListener("click",()=>{
- register.setAttribute("class","hidden");
- singIn.removeAttribute("class");
+register.setAttribute("class","hidden");
+ singIn.removeAttribute("class"); 
 
 })
 
+//constante para almacenar datos
+let users ={
+  name:"",
+  nickName:"",
+  email:"",
+  password:"",
+};
+let usersWhitGoogle ={
+  name:"",
+  nickName:"",
+  email:"",
+  password:"",
+};
 
 
 //confirma que el usuario esta logueando para que no tenga que volver a ingresar sus datos
 window.onload = () => {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
+
+      userName.innerHTML=`Bienvenid@  ${user.displayName}`;
+      console.log(user);
+
+
       console.log('Inicio Logueado ')
       login.classList.remove("contenedor-menu");
       logout.classList.add("contenedor-menu");
+      
 
     } else {
       console.log('No esta logueado');
       login.classList.add("contenedor-menu");
       logout.classList.remove("contenedor-menu");
+      register.setAttribute("class","hidden");
+      singIn.removeAttribute("class");
+      
 
     }
   });
@@ -56,9 +79,12 @@ window.onload = () => {
 btnRegister.addEventListener("click", () => {
   firebase.auth().createUserWithEmailAndPassword(emailRegister.value, passwordRregister.value)
     .then(() => {
+     
+      
+
       console.log("me registro");
-      console.log(passwordRregister.value);
-      console.log(emailRegister.value);
+       console.log(users);
+      
     })
     .catch((error) => {
       // Handle Errors here.
@@ -92,6 +118,9 @@ btnLogout.addEventListener('click', () => {
       console.log('Cerro Sesión');
       login.classList.remove("contenedor-menu");
       logout.classList.add("contenedor-menu");
+      register.setAttribute("class","hidden");
+ singIn.removeAttribute("class");
+
     })
     .catch((error) => {
       console.log('Error al cerrar Sesión');

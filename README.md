@@ -17,7 +17,7 @@ Mientras pensabamos la estructura de la página recordamos nuestras propias expe
 
 Así surgieron estos primeros sketch:
 
-![Perfil](..\imagenes readme\prototipo de baja fidelidad celular primer diseño\Perfil.jpeg)
+![Perfil](C:\Users\Mely\Documents\lim-2018-05-bc-core-pm-socialnetwork\imagenes readme\prototipo de baja fidelidad celular primer diseño\Perfil.jpeg)
 
 ![Muro](..\imagenes readme\prototipo de baja fidelidad celular primer diseño\Publicaciones.jpeg)
 

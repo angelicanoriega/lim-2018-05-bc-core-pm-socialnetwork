@@ -4,3 +4,11 @@
 .hidden{
   display: none;
 }
+.warning 
+ 
+{ outline:0px;
+  background-color:rgba(255, 0, 0, 0.5); 
+  border-color: rgba(255, 0, 0);
+  
+}
+

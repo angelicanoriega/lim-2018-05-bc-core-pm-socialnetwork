@@ -1,52 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Social Network</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css">
-    <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="fonts.css">
   </head>
   <body>
-    <section class="titleAndmenu">       
+   <div> 
+    <header> 
+     <div class="container">   
       <h1 class="itsFood">It's Food</h1>
-      <div id="menu"class="contenedor-menu">
+      <div id="menu"class="hidden">
         <input type="checkbox" id="menu-profile">
-        <label class="icon-profie" for="menu-profile"><img src="img/botón-menu.png" alt="icon-profie"></label>
+        <label class="icon-list" for="menu-profile"></label>
           <div class="profile-user">
             <p id="user_name"></p>
             <input type="button"  id="Logout" value="salir">
           </div>
       </div>
-    </section> 
+      </div> 
+    </header> 
     <section id="singIn-register">
       <div id="singIn">
         <label for="email">Email</label>
         <input type="email" id="email">
+        <br>
         <label for="password">password</label>
         <input type="password" id="password">
-        <div id="validation-Message"></div>
+        <br>
+        <div id="validation-Message">
         <input type="button" id="SignIn" value="Entrar">
+        <br>
         <input type="button" id="google-SignIn" value="Google">
-        <input type="button" id="newAccount-register" value="Crear cuenta nueva"> 
+        <br>
+        </div>
+        <p id="newAccount-register">Crear cuenta nueva</p>
       </div>
       <div id="register" class="hidden">
         <label for="name-register">Nombre Completo</label>
         <input type="text" id="name-register">
+        <br>
         <label for="nickName-register">Nombre de Usuario</label>
         <input type="text" id="nickName-register">
+        <br>
         <label for="email-register">Ingresa Email</label>
         <input type="email" id="email-register">
+        <br>
         <label for="password-register">Ingresa password</label>
         <input type="password" id="password-register" >
+        <br>
+        <div id="validation-Message">
         <input type="button" id="register" value="Registrarse">
+        <br>
         <input type="button" id="google-SignIn" value="Google">
         <div id="validation-message"></div>
         <!--input type="button" id="facebook-SignIn" value="facebook"-->
         <input type="button" id="return" value="regresar">
+        </div>
       </div>
     </section>
+    <footer id="imagen">
+     <img src="img/comida1.png" alt="imagen">
+    </footer>
+  </body>
 <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
 <script>
 // Initialize Firebase
@@ -61,7 +80,9 @@ var config = {
 firebase.initializeApp(config);
 </script>
 
+
+    
 <script src="app.js"></script>
 <script src="network.js"></script>
-</body>
+
 </html>

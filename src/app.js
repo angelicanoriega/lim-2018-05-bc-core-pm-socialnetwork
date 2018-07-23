@@ -22,6 +22,7 @@ const logout = document.getElementById("singIn-register");
 let userName = document.getElementById("user_name");
 const register = document.getElementById("register");
 const singIn = document.getElementById("singIn");
+const visualImgFont=document.getElementById("imagen");
 
 //ocultando y apareciondo el area de inciar sesion y registro
 btnNewAccount.addEventListener("click", () => {
@@ -153,17 +154,18 @@ window.onload = () => {
 
 
       console.log('Inicio Logueado ')
-      login.classList.remove("contenedor-menu");
-      logout.classList.add("contenedor-menu");
+      login.classList.remove("hidden");
+      logout.classList.add("hidden");
+      visualImgFont.setAttribute("class", "hidden");
 
 
     } else {
       console.log('No esta logueado');
-      login.classList.add("contenedor-menu");
-      logout.classList.remove("contenedor-menu");
+      login.classList.add("hidden");
+      logout.classList.remove("hidden");
       register.setAttribute("class", "hidden");
       singIn.removeAttribute("class");
-
+      visualImgFont.removeAttribute("class");
 
     }
   });
@@ -210,8 +212,8 @@ btnLogout.addEventListener('click', () => {
   firebase.auth().signOut()
     .then(() => {
       console.log('Cerro Sesión');
-      login.classList.remove("contenedor-menu");
-      logout.classList.add("contenedor-menu");
+      login.classList.remove("hidden");
+      logout.classList.add("hidden");
       register.setAttribute("class", "hidden");
       singIn.removeAttribute("class");
 

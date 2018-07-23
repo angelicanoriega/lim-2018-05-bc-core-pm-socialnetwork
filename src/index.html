@@ -23,6 +23,7 @@
       </div>
       </div> 
     </header> 
+     
     <section id="singIn-register">
       <div id="singIn">
         <label for="email">Email</label>
@@ -62,27 +63,36 @@
         </div>
       </div>
     </section>
+    
+    <section id="wall"  class="hidden">
+      <div id="dataBase">
+        <textarea name="Publicación"  id="post"  cols="30"  rows="10"></textarea>
+        <br>
+        <input type="button" value="Publicar" id="btnSave">
+      </div>
+      <div id="publications">
+        <h3>Publicación</h3>
+      </div>
+    </section>
+
     <footer id="imagen">
      <img src="img/comida1.png" alt="imagen">
     </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    const config = {
+      apiKey: "AIzaSyD-77ZyY3Xr4WufiPLXx5qBQBH4Ha6ZBLU",
+      authDomain: "red-social-4956d.firebaseapp.com",
+      databaseURL: "https://red-social-4956d.firebaseio.com",
+      projectId: "red-social-4956d",
+      storageBucket: "red-social-4956d.appspot.com",
+      messagingSenderId: "702674464004"
+    };
+    firebase.initializeApp(config);
+    </script>
+    <script src="app.js"></script>
+    <script src="network.js"></script>
   </body>
-<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-<script>
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyD-77ZyY3Xr4WufiPLXx5qBQBH4Ha6ZBLU",
-  authDomain: "red-social-4956d.firebaseapp.com",
-  databaseURL: "https://red-social-4956d.firebaseio.com",
-  projectId: "red-social-4956d",
-  storageBucket: "red-social-4956d.appspot.com",
-  messagingSenderId: "702674464004"
-};
-firebase.initializeApp(config);
-</script>
-
-
-    
-<script src="app.js"></script>
-<script src="network.js"></script>
-
 </html>

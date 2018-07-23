@@ -42,7 +42,7 @@ btnReturn.addEventListener("click", () => {
 
 // condicionales de validacion
 /*constante para escribir el mensaje de validacion en iniciar sesion*/
-const validationMessageSI = document.getElementById("validation-Message");
+const validationMessageSI = document.getElementById("validation-message");
 /*mensajes de validacion de Iniciar sesion
 1.- input para introduccion de correo*/
 email.addEventListener("keyup", () => {

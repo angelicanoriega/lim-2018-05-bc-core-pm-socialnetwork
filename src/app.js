@@ -134,13 +134,6 @@ passwordRregister.addEventListener("keyup", () => {
   }
 })
 
-//constante para almacenar datos
-const users = {
-  name: "",
-  displayName: "",
-  email: ""
-};
-
 //confirma que el usuario esta logueando para que no tenga que volver a ingresar sus datos
 window.onload = () => {
   firebase.auth().onAuthStateChanged(user => {
@@ -180,11 +173,11 @@ const writeNewPost = (uid, body) => {
     body: body,
   };
 
-  // Get a key for a new Post.
+  // Obtener un identificador(key) para el post
   const newPostKey = firebase.database().ref().child('posts').push().key;
 
   // Write the new post's data simultaneously in the posts list and the user's post list.
-  var updates = {};
+  const updates = {};
   updates['/posts/' + newPostKey] = postData;
   updates['/user-posts/' + uid + '/' + newPostKey] = postData;
 
@@ -201,7 +194,7 @@ btnRegister.addEventListener("click", () => {
       user.displayName = nickNameRegister.value;
       user.name = nameRegister.value;
       console.log(nickNameRegister.value);
-      writeUserData(user.uid, user.displayName, user.displayName, user.email, user.photoURL);
+      writeUserData(user.uid, nameRegister.value, nickNameRegister.value, user.email, user.photoURL);
     })
     .catch((error) => {
       // Handle Errors here.
@@ -227,54 +220,69 @@ btnSignIn.addEventListener("click", () => {
     });
 })
 
+//iniciando con google 
+btnGoogle.addEventListener("click", () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider)
+    .then((result) => {
+      console.log("ingrese con google");
+      const user = result.user;
+      writeUserData(user.uid, user.displayName, user.displayName, user.email, user.photoURL);
+    })
+    .catch((error) => {
+      console.log(error.code);
+      console.log(error.message);
+      console.log(error.email);
+      console.log(error.credential);
+    });
+})
+
+//Creando post
 btnSave.addEventListener('click', () => {
-  var userId = firebase.auth().currentUser.uid;
-  const newPost = writeNewPost(userId, post.value );
-
-
-  var btnUpdate = document.createElement("input");
-  btnUpdate.setAttribute("value", "Update");
+  const userId = firebase.auth().currentUser.uid;
+  const newPost = writeNewPost(userId, post.value);
+  
+  const btnUpdate = document.createElement("input");
+  btnUpdate.setAttribute("value", "Editar");
   btnUpdate.setAttribute("type", "button");
-  var btnDelete = document.createElement("input");
-  btnDelete.setAttribute("value", "Delete");
+  const btnDelete = document.createElement("input");
+  btnDelete.setAttribute("value", "Borrar");
   btnDelete.setAttribute("type", "button");
-  var contPost = document.createElement('div');
-  var textPost = document.createElement('textarea')
+  const contPost = document.createElement('div');
+  const textPost = document.createElement('textarea')
   textPost.setAttribute("id", newPost);
 
   textPost.innerHTML = post.value;
-
+  post.value = "";
   btnDelete.addEventListener('click', () => {
 
     firebase.database().ref().child('/user-posts/' + userId + '/' + newPost).remove();
     firebase.database().ref().child('posts/' + newPost).remove();
 
-    while(posts.firstChild) posts.removeChild(posts.firstChild);
+    while (contPost === true) posts.remove(textPost);
 
     alert('The user is deleted successfully!');
-    reload_page();
-
   });
 
   btnUpdate.addEventListener('click', () => {
     const newUpdate = document.getElementById(newPost);
-    const nuevoPost = {
+    const newPostUser = {
       body: newUpdate.value,
     };
 
-    var updatesUser = {};
-    var updatesPost = {};
+    const updatesUser = {};
+    const updatesPost = {};
 
-    updatesUser['/user-posts/' + userId + '/' + newPost] = nuevoPost;
-    updatesPost['/posts/' + newPost ] = nuevoPost;
+    updatesUser['/user-posts/' + userId + '/' + newPost] = newPostUser;
+    updatesPost['/posts/' + newPost] = newPostUser;
 
     firebase.database().ref().update(updatesUser);
     firebase.database().ref().update(updatesPost);
-    
+
   });
-  
+
   contPost.appendChild(textPost);
-  contPost.appendChild(btnUpdate );
+  contPost.appendChild(btnUpdate);
   contPost.appendChild(btnDelete);
   posts.appendChild(contPost);
 })
@@ -292,22 +300,5 @@ btnLogout.addEventListener('click', () => {
     })
     .catch((error) => {
       console.log('Error al cerrar Sesión');
-    });
-})
-
-//iniciando con google 
-btnGoogle.addEventListener("click", () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider)
-    .then((result) => {
-      console.log("ingrese con google");
-      const user = result.user;
-      writeUserData(user.uid, user.displayName, user.displayName, user.email, user.photoURL);
-    })
-    .catch((error) => {
-      console.log(error.code);
-      console.log(error.message);
-      console.log(error.email);
-      console.log(error.credential);
     });
 })

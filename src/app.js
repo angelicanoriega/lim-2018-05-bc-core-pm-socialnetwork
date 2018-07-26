@@ -49,8 +49,7 @@ email.addEventListener("keyup", () => {
   if (email.value.length <= 0) {
     validationMessageSI.innerHTML = "<span>Completa el cuadro <strong>Email</strong></span>";
     email.setAttribute("class", "warning");
-  }
-  else {
+  } else {
     validationMessageSI.innerHTML = "<span></span>";
     email.removeAttribute("class");
   }
@@ -61,8 +60,7 @@ password.addEventListener("keyup", () => {
   if (password.value.length <= 0) {
     validationMessageSI.innerHTML = "<span>Completa el cuadro <strong>Pasword</strong></span>";
     password.setAttribute("class", "warning");
-  }
-  else {
+  } else {
     validationMessageSI.innerHTML = "<span></span>";
     password.removeAttribute("class");
 
@@ -80,8 +78,7 @@ nameRegister.addEventListener("keyup", () => {
   if (nameRegister.value.length <= 0) {
     validationMessage.innerHTML = "<span>Completa el cuadros de registro <strong>Nombre Completo</strong></span>";
     nameRegister.setAttribute("class", "warning");
-  }
-  else {
+  } else {
     validationMessage.innerHTML = "<span></span>";
     nameRegister.removeAttribute("class");
 
@@ -95,8 +92,7 @@ nickNameRegister.addEventListener("keyup", () => {
   if (nickNameRegister.value.length <= 0) {
     validationMessage.innerHTML = "<span>Completa el cuadro de registro <strong>Nombre de Usuario</strong></span>";
     nickNameRegister.setAttribute("class", "warning");
-  }
-  else {
+  } else {
     validationMessage.innerHTML = "<span></span>";
     nickNameRegister.removeAttribute("class");
   }
@@ -109,8 +105,7 @@ emailRegister.addEventListener("keyup", () => {
   if (emailRegister.value.length <= 0) {
     validationMessage.innerHTML = "<span>Completa el cuadro de registro <strong>Email</strong></span>";
     emailRegister.setAttribute("class", "warning");
-  }
-  else {
+  } else {
     validationMessage.innerHTML = "<span></span>";
     emailRegister.removeAttribute("class");
   }
@@ -123,12 +118,10 @@ passwordRregister.addEventListener("keyup", () => {
   if (passwordRregister.value.length === 0) {
     validationMessage.innerHTML = "<span>Completa el cuadro de registro <strong>Password</strong></span>";
     passwordRregister.setAttribute("class", "warning");
-  }
-  else if (passwordRregister.value.length <= 5) {
+  } else if (passwordRregister.value.length <= 5) {
     validationMessage.innerHTML = "<span>Completa el cuadro de registro <strong>Password</strong> con una contraseña de minimo 6 digitos</span>";
     passwordRregister.setAttribute("class", "warning");
-  }
-  else {
+  } else {
     validationMessage.innerHTML = "<span></span>";
     passwordRregister.removeAttribute("class");
   }
@@ -146,12 +139,12 @@ window.onload = () => {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       userName.innerHTML = `Bienvenid@  ${user.displayName}`;
-      console.log(user);
       console.log('Inicio Logueado ')
       login.classList.remove("hidden");
       logout.classList.add("hidden");
       visualImgFont.setAttribute("class", "hidden");
       wall.classList.remove("hidden");
+
     } else {
       console.log('No esta logueado');
       login.classList.add("hidden");
@@ -166,6 +159,7 @@ window.onload = () => {
 
 const writeUserData = (userId, name, nickName, email, imageUrl) => {
   firebase.database().ref('users/' + userId).set({
+    usersId: userId,
     userName: name,
     userNickName: nickName,
     email: email,
@@ -228,10 +222,6 @@ btnSignIn.addEventListener("click", () => {
 })
 
 btnSave.addEventListener('click', () => {
-  var userId = firebase.auth().currentUser.uid;
-  const newPost = writeNewPost(userId, post.value );
-
-
   var btnUpdate = document.createElement("input");
   btnUpdate.setAttribute("value", "Update");
   btnUpdate.setAttribute("type", "button");
@@ -242,17 +232,33 @@ btnSave.addEventListener('click', () => {
   var textPost = document.createElement('textarea')
   textPost.setAttribute("id", newPost);
 
-  textPost.innerHTML = post.value;
+  userUbication.on('child_added', snap => {
 
+    let listUserId = Object.keys(snap.val());
+    console.log(listUserId);
+
+
+    showPostSaved.on("child_added", snap => {
+      let listPost = Object.keys(snap.val());
+      console.log(listPost);
+
+
+      let output = '';
+      output += ``;
+
+    });
+
+  })
+  textPost.innerHTML = post.value;
+  post.value = '';
   btnDelete.addEventListener('click', () => {
 
     firebase.database().ref().child('/user-posts/' + userId + '/' + newPost).remove();
     firebase.database().ref().child('posts/' + newPost).remove();
 
-    while(posts.firstChild) posts.removeChild(posts.firstChild);
+    contPost.remove();
 
     alert('The user is deleted successfully!');
-    reload_page();
 
   });
 
@@ -266,15 +272,15 @@ btnSave.addEventListener('click', () => {
     var updatesPost = {};
 
     updatesUser['/user-posts/' + userId + '/' + newPost] = nuevoPost;
-    updatesPost['/posts/' + newPost ] = nuevoPost;
+    updatesPost['/posts/' + newPost] = nuevoPost;
 
     firebase.database().ref().update(updatesUser);
     firebase.database().ref().update(updatesPost);
-    
+
   });
-  
+
   contPost.appendChild(textPost);
-  contPost.appendChild(btnUpdate );
+  contPost.appendChild(btnUpdate);
   contPost.appendChild(btnDelete);
   posts.appendChild(contPost);
 })

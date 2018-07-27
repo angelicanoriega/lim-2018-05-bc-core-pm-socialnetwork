@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.hidden{
+  display: none;
+}
+.warning 
+ 
+{ outline:0px;
+  background-color:rgba(255, 0, 0, 0.5); 
+  border-color: rgba(255, 0, 0);
+}
+header {
+  width: 100%;
+  height: 100px;
+  background-color:#6FAB32;
+  color:#ffff;
+  position:fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+h1 {
+  font-size:50px;
+  float: left;
+  position:absolute;
+  top:12px;
+}
+/* menu desplegable del css*/
+#menu-profile{
+  display: none;
+}
+header label{
+  float: right;
+  font-size: 30px;
+  margin:35px 0 ;
+  cursor: pointer;
+
+}
+.profile-user{
+  position: absolute;
+  top:100px;
+  left: 0;
+  width: 320px;
+  height: 100vh;
+  background: #6FAB32;
+  transition: all 0.5s;
+  transform: translateX(-100%)
+}
+.profile-user p  {
+  display: block;
+  color: #fff;
+  height: 50px;
+  text-decoration: none;
+  padding: 15px;
+}
+#menu-profile:checked ~ .profile-user{
+  transform: translateX(0%)
+  
+}
+#Logout {
+  display: block;
+  text-decoration: none;
+  margin: 60px 15px;
+  cursor: pointer;
+  padding: 10px;
+  color: #ffffff;
+  background-color: #db0d0d;
+  border-radius: 6px;
+  border: 2px solid #7a0707;
+}
+header .container{
+ text-align:center;
+  width:85% ;
+  margin: auto;
+  display: table;
+}
+section{
+  
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+    
+}
+
+img{
+  position: absolute;
+  bottom: 0;
+  width:100%;
+  z-index: -100;
+}
+
+#singIn{
+
+  position:relative;
+  font-size:10px;
+  text-align:center;
+  padding:9px;
+  padding-top:15px;
+  padding-bottom:15px;
+  background-color: rgba(145, 145, 145, 0.20)
+}
+#register{
+  position:relative;
+  font-size:10px;
+  text-align:center;
+  padding:9px;
+  padding-top:15px;
+  padding-bottom:15px;
+  background-color: rgba(145, 145, 145, 0.20)
+}
+span{
+  color: #db0d0d;
+}
+#newAccount-register{
+  color: blue;
+}
+#validation-Message input{
+border: none;
+background: #6FAB32;
+margin:8px;
+color: #f2f2f2;
+padding: 4px;
+font-size: 10px;
+border-radius: 5px;
+position: relative;
+}
+input{
+border: none;
+border-radius: 5px;
+}

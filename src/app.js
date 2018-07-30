@@ -12,7 +12,9 @@ const emailRegister = document.getElementById("email-register");
 const passwordRregister = document.getElementById("password-register");
 //botones de iniciar secion con google y facebook(aun si uso)
 const btnGoogle = document.getElementById("google-SignIn");
-/* aun no se pone en uso const btnFacebook = document.getElementById("facebook-SignIn");*/
+const btnGoogleRegister = document.getElementById("google-register");
+const btnFacebook = document.getElementById("facebook-SignIn");
+const btnFacebookRegister = document.getElementById("facebook-register");
 //botones de ocutar y aparecer (iniciar secion  registrarse)
 const btnNewAccount = document.getElementById("newAccount-register");
 const btnReturn = document.getElementById("return");
@@ -38,19 +40,39 @@ btnNewAccount.addEventListener("click", () => {
 btnReturn.addEventListener("click", () => {
   register.setAttribute("class", "hidden");
   singIn.removeAttribute("class");
+  
 })
 
+//mostrando y ocultando contraseña
+const visualPaswordSI = document.getElementById('password-show');
+const visualPaswordRE = document.getElementById('password-register-show');
+
+visualPaswordSI.addEventListener("click",()=>{
+  if(password.type ==="password"){
+    password.type="text";
+  }
+  else{
+    password.type="password";
+  }
+});
+visualPaswordRE.addEventListener("click",()=>{
+  if(passwordRregister.type ==="password"){
+    passwordRregister.type="text";
+  }
+  else{
+    passwordRregister.type="password";
+  }
+})
 // condicionales de validacion
 /*constante para escribir el mensaje de validacion en iniciar sesion*/
-const validationMessageSI = document.getElementById("validation-message");
+let validationMessageSI = document.getElementById("validation-message");
 /*mensajes de validacion de Iniciar sesion
 1.- input para introduccion de correo*/
 email.addEventListener("keyup", () => {
   if (email.value.length <= 0) {
     validationMessageSI.innerHTML = "<span>Completa el cuadro <strong>Email</strong></span>";
     email.setAttribute("class", "warning");
-  }
-  else {
+  } else {
     validationMessageSI.innerHTML = "<span></span>";
     email.removeAttribute("class");
   }
@@ -61,8 +83,7 @@ password.addEventListener("keyup", () => {
   if (password.value.length <= 0) {
     validationMessageSI.innerHTML = "<span>Completa el cuadro <strong>Pasword</strong></span>";
     password.setAttribute("class", "warning");
-  }
-  else {
+  } else {
     validationMessageSI.innerHTML = "<span></span>";
     password.removeAttribute("class");
 
@@ -70,7 +91,7 @@ password.addEventListener("keyup", () => {
 })
 
 /*constante para escribir el mensaje de validacion en registro*/
-const validationMessage = document.getElementById("validation-message");
+let validationMessage = document.getElementById("validation-messageR");
 /*mensajes de validacion del registro
 1.- input para introduccion de nombre completo*/
 nameRegister.addEventListener("mousemove", () => {
@@ -80,8 +101,7 @@ nameRegister.addEventListener("keyup", () => {
   if (nameRegister.value.length <= 0) {
     validationMessage.innerHTML = "<span>Completa el cuadros de registro <strong>Nombre Completo</strong></span>";
     nameRegister.setAttribute("class", "warning");
-  }
-  else {
+  } else {
     validationMessage.innerHTML = "<span></span>";
     nameRegister.removeAttribute("class");
 
@@ -95,22 +115,20 @@ nickNameRegister.addEventListener("keyup", () => {
   if (nickNameRegister.value.length <= 0) {
     validationMessage.innerHTML = "<span>Completa el cuadro de registro <strong>Nombre de Usuario</strong></span>";
     nickNameRegister.setAttribute("class", "warning");
-  }
-  else {
+  } else {
     validationMessage.innerHTML = "<span></span>";
     nickNameRegister.removeAttribute("class");
   }
 })
 /*3.- input para introduccion de email*/
 emailRegister.addEventListener("mousemove", () => {
-  validationMessage.innerHTML = "<span>Completa este cuadro con un email </span>";
+  validationMessage.innerHTML = "<span>Completa este cuadro con un email, ejemplo: <strong>miusuario@dominio.algo</strong> </span>";
 })
 emailRegister.addEventListener("keyup", () => {
   if (emailRegister.value.length <= 0) {
     validationMessage.innerHTML = "<span>Completa el cuadro de registro <strong>Email</strong></span>";
     emailRegister.setAttribute("class", "warning");
-  }
-  else {
+  } else {
     validationMessage.innerHTML = "<span></span>";
     emailRegister.removeAttribute("class");
   }
@@ -123,191 +141,14 @@ passwordRregister.addEventListener("keyup", () => {
   if (passwordRregister.value.length === 0) {
     validationMessage.innerHTML = "<span>Completa el cuadro de registro <strong>Password</strong></span>";
     passwordRregister.setAttribute("class", "warning");
-  }
-  else if (passwordRregister.value.length <= 5) {
+  } else if (passwordRregister.value.length <= 5) {
     validationMessage.innerHTML = "<span>Completa el cuadro de registro <strong>Password</strong> con una contraseña de minimo 6 digitos</span>";
     passwordRregister.setAttribute("class", "warning");
-  }
-  else {
+  } else {
     validationMessage.innerHTML = "<span></span>";
     passwordRregister.removeAttribute("class");
   }
 })
 
-//constante para almacenar datos
-const users = {
-  name: "",
-  displayName: "",
-  email: ""
-};
-
-//confirma que el usuario esta logueando para que no tenga que volver a ingresar sus datos
-window.onload = () => {
-  firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-      userName.innerHTML = `Bienvenid@  ${user.displayName}`;
-      console.log(user);
-      console.log('Inicio Logueado ')
-      login.classList.remove("hidden");
-      logout.classList.add("hidden");
-      visualImgFont.setAttribute("class", "hidden");
-      wall.classList.remove("hidden");
-    } else {
-      console.log('No esta logueado');
-      login.classList.add("hidden");
-      logout.classList.remove("hidden");
-      register.setAttribute("class", "hidden");
-      singIn.removeAttribute("class");
-      visualImgFont.removeAttribute("class");
-      wall.classList.add("hidden");
-    }
-  });
-}
-
-const writeUserData = (userId, name, nickName, email, imageUrl) => {
-  firebase.database().ref('users/' + userId).set({
-    userName: name,
-    userNickName: nickName,
-    email: email,
-    profile_picture: imageUrl
-  });
-}
-
-const writeNewPost = (uid, body) => {
-  // A post entry.
-  const postData = {
-    uid: uid,
-    body: body,
-  };
-
-  // Get a key for a new Post.
-  const newPostKey = firebase.database().ref().child('posts').push().key;
-
-  // Write the new post's data simultaneously in the posts list and the user's post list.
-  var updates = {};
-  updates['/posts/' + newPostKey] = postData;
-  updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-
-  firebase.database().ref().update(updates);
-  return newPostKey;
-}
-
-//Registrando usuarios nuevos
-btnRegister.addEventListener("click", () => {
-  firebase.auth().createUserWithEmailAndPassword(emailRegister.value, passwordRregister.value)
-    .then((result) => {
-      console.log("me registro");
-      const user = result.user;
-      user.displayName = nickNameRegister.value;
-      user.name = nameRegister.value;
-      console.log(nickNameRegister.value);
-      writeUserData(user.uid, user.displayName, user.displayName, user.email, user.photoURL);
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      let errorCode = error.code;
-      let errorMessage = error.message;
-      // ...
-    });
-})
-
-//Acceso de usuarios existentes
-btnSignIn.addEventListener("click", () => {
-  firebase.auth().signInWithEmailAndPassword(email.value, password.value)
-    .then(() => {
-      console.log("entre");
-      console.log(passwordRregister.value);
-      console.log(emailRegister.value);
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      let errorCode = error.code;
-      let errorMessage = error.message;
-      // ...
-    });
-})
-
-btnSave.addEventListener('click', () => {
-  var userId = firebase.auth().currentUser.uid;
-  const newPost = writeNewPost(userId, post.value );
 
 
-  var btnUpdate = document.createElement("input");
-  btnUpdate.setAttribute("value", "Update");
-  btnUpdate.setAttribute("type", "button");
-  var btnDelete = document.createElement("input");
-  btnDelete.setAttribute("value", "Delete");
-  btnDelete.setAttribute("type", "button");
-  var contPost = document.createElement('div');
-  var textPost = document.createElement('textarea')
-  textPost.setAttribute("id", newPost);
-
-  textPost.innerHTML = post.value;
-
-  btnDelete.addEventListener('click', () => {
-
-    firebase.database().ref().child('/user-posts/' + userId + '/' + newPost).remove();
-    firebase.database().ref().child('posts/' + newPost).remove();
-
-    while(posts.firstChild) posts.removeChild(posts.firstChild);
-
-    alert('The user is deleted successfully!');
-    reload_page();
-
-  });
-
-  btnUpdate.addEventListener('click', () => {
-    const newUpdate = document.getElementById(newPost);
-    const nuevoPost = {
-      body: newUpdate.value,
-    };
-
-    var updatesUser = {};
-    var updatesPost = {};
-
-    updatesUser['/user-posts/' + userId + '/' + newPost] = nuevoPost;
-    updatesPost['/posts/' + newPost ] = nuevoPost;
-
-    firebase.database().ref().update(updatesUser);
-    firebase.database().ref().update(updatesPost);
-    
-  });
-  
-  contPost.appendChild(textPost);
-  contPost.appendChild(btnUpdate );
-  contPost.appendChild(btnDelete);
-  posts.appendChild(contPost);
-})
-
-//salir de la cuenta del usuario
-btnLogout.addEventListener('click', () => {
-  firebase.auth().signOut()
-    .then(() => {
-      console.log('Cerro Sesión');
-      login.classList.remove("hidden");
-      logout.classList.add("hidden");
-      register.setAttribute("class", "hidden");
-      singIn.removeAttribute("class");
-
-    })
-    .catch((error) => {
-      console.log('Error al cerrar Sesión');
-    });
-})
-
-//iniciando con google 
-btnGoogle.addEventListener("click", () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider)
-    .then((result) => {
-      console.log("ingrese con google");
-      const user = result.user;
-      writeUserData(user.uid, user.displayName, user.displayName, user.email, user.photoURL);
-    })
-    .catch((error) => {
-      console.log(error.code);
-      console.log(error.message);
-      console.log(error.email);
-      console.log(error.credential);
-    });
-})

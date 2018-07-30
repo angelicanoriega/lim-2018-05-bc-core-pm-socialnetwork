@@ -40,7 +40,6 @@ btnNewAccount.addEventListener("click", () => {
 btnReturn.addEventListener("click", () => {
   register.setAttribute("class", "hidden");
   singIn.removeAttribute("class");
-  
 })
 
 //mostrando y ocultando contraseña
@@ -65,7 +64,7 @@ visualPaswordRE.addEventListener("click",()=>{
 })
 // condicionales de validacion
 /*constante para escribir el mensaje de validacion en iniciar sesion*/
-let validationMessageSI = document.getElementById("validation-message");
+const validationMessageSI = document.getElementById("validation-message");
 /*mensajes de validacion de Iniciar sesion
 1.- input para introduccion de correo*/
 email.addEventListener("keyup", () => {
@@ -91,7 +90,7 @@ password.addEventListener("keyup", () => {
 })
 
 /*constante para escribir el mensaje de validacion en registro*/
-let validationMessage = document.getElementById("validation-messageR");
+const validationMessage = document.getElementById("validation-messageR");
 /*mensajes de validacion del registro
 1.- input para introduccion de nombre completo*/
 nameRegister.addEventListener("mousemove", () => {
@@ -149,6 +148,3 @@ passwordRregister.addEventListener("keyup", () => {
     passwordRregister.removeAttribute("class");
   }
 })
-
-
-

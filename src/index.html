@@ -27,11 +27,9 @@
     <section id="singIn-register">
       <div id="singIn">
         <h2>Iniciar Sesión</h2>
-        <label for="email">Email</label>
-        <input type="email" id="email">
+        <input type="email" id="email" placeholder="Correo Electrónico">
         <br>
-        <label for="password">password</label>
-        <input type="password" id="password">
+        <input type="password" id="password" placeholder="Contraseña">
         <input type="checkbox" id="password-show">
         <br>
         <div id="validation-Message">
@@ -46,25 +44,19 @@
       </div>
       <div id="register" class="hidden">
         <h2>Registrate</h2>
-        <label for="name-register">Nombre Completo</label>
-        <input type="text" id="name-register">
+        <input type="text" id="name-register" placeholder="Nombre Completo">
         <br>
-        <label for="nickName-register">Nombre de Usuario</label>
-        <input type="text" id="nickName-register">
+        <input type="text" id="nickName-register" placeholder="Nombre Usuario">
         <br>
-        <label for="email-register">Ingresa Email</label>
-        <input type="email" id="email-register">
+        <input type="email" id="email-register" placeholder="Correo Electrónico">
         <br>
-        <label for="password-register">Ingresa password</label>
-        <input type="password" id="password-register" >
+        <input type="password" id="password-register" placeholder="Contraseña">
         <input type="checkbox" id="password-register-show">
         <br>
         <div id="validation-Message">
         <input type="button" id="register" value="Registrarse">
         <br>
-        <input type="button" id="google-register" value="Google">
-        <input type="button" id="facebook-register" value="facebook">
-        <input type="button" id="return" value="regresar">
+        <input type="button" id="return" value="Regresar">
         </div>
         <div id="validation-messageR"></div>
       </div>
@@ -88,18 +80,18 @@
 
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
     <script>
-    // Initialize Firebase
-    const config = {
-      apiKey: "AIzaSyD-77ZyY3Xr4WufiPLXx5qBQBH4Ha6ZBLU",
-      authDomain: "red-social-4956d.firebaseapp.com",
-      databaseURL: "https://red-social-4956d.firebaseio.com",
-      projectId: "red-social-4956d",
-      storageBucket: "red-social-4956d.appspot.com",
-      messagingSenderId: "702674464004"
-    };
-    firebase.initializeApp(config);
+      // Initialize Firebase
+      const config = {
+        apiKey: "AIzaSyD-77ZyY3Xr4WufiPLXx5qBQBH4Ha6ZBLU",
+        authDomain: "red-social-4956d.firebaseapp.com",
+        databaseURL: "https://red-social-4956d.firebaseio.com",
+        projectId: "red-social-4956d",
+        storageBucket: "red-social-4956d.appspot.com",
+        messagingSenderId: "702674464004"
+      };
+      firebase.initializeApp(config);
     </script>
-   <script src="app.js"></script>
+    <script src="app.js"></script>
     <script src="network.js"></script>
     <script src="fire-base.js"></script>
   </body>

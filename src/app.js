@@ -68,7 +68,7 @@ password.addEventListener("keyup", () => {
 })
 
 /*constante para escribir el mensaje de validacion en registro*/
-const validationMessage = document.getElementById("validation-message");
+const validationMessage = document.getElementById("validation-messageR");
 /*mensajes de validacion del registro
 1.- input para introduccion de nombre completo*/
 nameRegister.addEventListener("mousemove", () => {

@@ -12,7 +12,9 @@ const emailRegister = document.getElementById("email-register");
 const passwordRregister = document.getElementById("password-register");
 //botones de iniciar secion con google y facebook(aun si uso)
 const btnGoogle = document.getElementById("google-SignIn");
-/* aun no se pone en uso const btnFacebook = document.getElementById("facebook-SignIn");*/
+const btnGoogleRegister = document.getElementById("google-register");
+const btnFacebook = document.getElementById("facebook-SignIn");
+const btnFacebookRegister = document.getElementById("facebook-register");
 //botones de ocutar y aparecer (iniciar secion  registrarse)
 const btnNewAccount = document.getElementById("newAccount-register");
 const btnReturn = document.getElementById("return");
@@ -38,8 +40,29 @@ btnNewAccount.addEventListener("click", () => {
 btnReturn.addEventListener("click", () => {
   register.setAttribute("class", "hidden");
   singIn.removeAttribute("class");
+  
 })
 
+//mostrando y ocultando contraseña
+const visualPaswordSI = document.getElementById('password-show');
+const visualPaswordRE = document.getElementById('password-register-show');
+
+visualPaswordSI.addEventListener("click",()=>{
+  if(password.type ==="password"){
+    password.type="text";
+  }
+  else{
+    password.type="password";
+  }
+});
+visualPaswordRE.addEventListener("click",()=>{
+  if(passwordRregister.type ==="password"){
+    passwordRregister.type="text";
+  }
+  else{
+    passwordRregister.type="password";
+  }
+})
 // condicionales de validacion
 /*constante para escribir el mensaje de validacion en iniciar sesion*/
 let validationMessageSI = document.getElementById("validation-message");
@@ -68,7 +91,7 @@ password.addEventListener("keyup", () => {
 })
 
 /*constante para escribir el mensaje de validacion en registro*/
-let validationMessage = document.getElementById("validation-message");
+let validationMessage = document.getElementById("validation-messageR");
 /*mensajes de validacion del registro
 1.- input para introduccion de nombre completo*/
 nameRegister.addEventListener("mousemove", () => {
@@ -99,7 +122,7 @@ nickNameRegister.addEventListener("keyup", () => {
 })
 /*3.- input para introduccion de email*/
 emailRegister.addEventListener("mousemove", () => {
-  validationMessage.innerHTML = "<span>Completa este cuadro con un email </span>";
+  validationMessage.innerHTML = "<span>Completa este cuadro con un email, ejemplo: <strong>miusuario@dominio.algo</strong> </span>";
 })
 emailRegister.addEventListener("keyup", () => {
   if (emailRegister.value.length <= 0) {

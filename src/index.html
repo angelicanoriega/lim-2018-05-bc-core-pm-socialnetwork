@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="fonts.css">
   </head>
   <body>
+   <div> 
     <header> 
      <div class="container">   
       <h1 class="itsFood">It's Food</h1>
@@ -31,11 +32,13 @@
         <br>
         <label for="password">password</label>
         <input type="password" id="password">
+        <input type="checkbox" id="password-show">
         <br>
         <div id="validation-Message">
         <input type="button" id="SignIn" value="Entrar">
         <br>
         <input type="button" id="google-SignIn" value="Google">
+        <input type="button" id="facebook-SignIn" value="facebook">
         <br>
         </div>
         <div id="validation-message"></div>
@@ -54,15 +57,16 @@
         <br>
         <label for="password-register">Ingresa password</label>
         <input type="password" id="password-register" >
+        <input type="checkbox" id="password-register-show">
         <br>
         <div id="validation-Message">
         <input type="button" id="register" value="Registrarse">
         <br>
-        <!--input type="button" id="google-SignIn" value="Google"-->
-        <!--input type="button" id="facebook-SignIn" value="facebook"-->
+        <input type="button" id="google-register" value="Google">
+        <input type="button" id="facebook-register" value="facebook">
         <input type="button" id="return" value="regresar">
-        </div>        
-          <div id="validation-messageR"></div>
+        </div>
+        <div id="validation-messageR"></div>
       </div>
     </section>
     
@@ -74,6 +78,7 @@
       </div>
       <div id="publications">
         <h3>Publicación</h3>
+        <div id="post-list"></div>
       </div>
     </section>
 
@@ -94,7 +99,8 @@
     };
     firebase.initializeApp(config);
     </script>
-    <script src="fira-base.js"></script>
-    <script src="app.js"></script>
+   <script src="app.js"></script>
+    <script src="network.js"></script>
+    <script src="fire-base.js"></script>
   </body>
 </html>

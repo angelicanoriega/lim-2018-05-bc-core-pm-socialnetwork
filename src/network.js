@@ -17,6 +17,7 @@ const writeNewPost = (uid, body) => {
     uid: uid,
     body: body,
     key: newPostKey,
+    like: ''
   };
 
   // Write the new post's data simultaneously in the posts list and the user's post list.
@@ -40,70 +41,89 @@ const returnData = (uid) => {
 
     const postUbication = firebase.database().ref('user-posts').child(uid);
     postUbication.on("child_added", snap => {
-      let listUser = snap.val().body;
-      let key = snap.val().key;
-      console.log(listUser);
-      showData(listUser, key, uid);
-      console.log(document.getElementsByClassName("eliminar"));
+      const listPost = snap.val().body;
+      const key = snap.val().key;
+      const numLike = snap.val().like;
+      console.log(listPost);
+      showData(listPost, key, uid, numLike);
     });
   })
 }
 
-const showData = (posts, keyPost, userId) => {
+const showData = (posts, keyPost, userId, likePost) => {
   const postL = document.getElementById("post-list");
-  postL.innerHTML +=
-    `<div class="userPost">
-      <textarea disabled id=${keyPost}>${posts}</textarea>
-      <br>
-      <span id=contador></span><input type=button class="like" value="like">
-      <input type=button class="update" value="Editar">
-      <input type=button class="hidden update-save"  value="Guardar">
-      <input type=button class="delete" value="Borrar">
-    </div>`;
 
-  const btnsUpdateSave = document.getElementsByClassName("update-save");
-  const btnsUpdate = document.getElementsByClassName("update");
-  const btnsDelete = document.getElementsByClassName("delete");
-  const divsDelete = document.getElementsByClassName("userPost");
-  const chancePost = document.getElementById(keyPost);
-  const like = document.getElementById("like");
-  const contador = document.getElementById("contador");
+  const divDelete = document.createElement("div");
+  const tab = document.createElement("br")
+  const changePost = document.createElement("textarea");
+  changePost.setAttribute("disabled", "disabled");
+  const tell = document.createElement("span");
+  const like = document.createElement("input");
+  like.setAttribute("value", "Like");
+  like.setAttribute("type", "button");
+  const btnUpdateSave = document.createElement("input");
+  btnUpdateSave.setAttribute("value", "Guardar");
+  btnUpdateSave.setAttribute("type", "button");
+  btnUpdateSave.setAttribute("class", "hidden");
+  const btnUpdate = document.createElement("input");
+  btnUpdate.setAttribute("value", "Editar");
+  btnUpdate.setAttribute("type", "button");
+  const btnDelete = document.createElement("input");
+  btnDelete.setAttribute("value", "Borrar");
+  btnDelete.setAttribute("type", "button");
 
-  for (btnUpdate of btnsUpdate) {
-    btnUpdate.addEventListener('click', () => {
-      btnUpdate.setAttribute("class", "hidden");
-      btnUpdateSave.removeAttribute("class");
-      chancePost.removeAttribute("disabled");
-    });
-  }
+  changePost.innerHTML = posts;
+  tell.innerHTML = likePost;
+  let saveNumber = '';
+  btnUpdate.addEventListener('click', () => {
+    btnUpdate.setAttribute("class", "hidden");
+    btnUpdateSave.removeAttribute("class");
+    changePost.removeAttribute("disabled");
+  });
 
-  for (btnUpdateSave of btnsUpdateSave) {
-    btnUpdateSave.addEventListener('click', () => {
-      btnUpdate.removeAttribute("class");
-      btnUpdateSave.setAttribute("class", "hidden");
-      chancePost.setAttribute("disabled", "disabled");
-      const postData = {
-        uid: userId,
-        body: chancePost.value,
-        key: keyPost
-      };
-      firebase.database().ref().child(`/user-posts/${userId}/${keyPost}`).set(postData);
-      firebase.database().ref().child(`posts/${keyPost}`).set(postData);
-    });
-  }
+  btnUpdateSave.addEventListener('click', () => {
+    btnUpdate.removeAttribute("class");
+    btnUpdateSave.setAttribute("class", "hidden");
+    changePost.setAttribute("disabled", "disabled");
+    const postData = {
+      uid: userId,
+      body: changePost.value,
+      key: keyPost,
+      like: likePost
+    };
+    firebase.database().ref().child(`/user-posts/${userId}/${keyPost}`).set(postData);
+    firebase.database().ref().child(`posts/${keyPost}`).set(postData);
+  });
 
-  for (btnDelete of btnsDelete) {
-    btnDelete.addEventListener('click', () => {
-      const opcion = confirm("Deseaes eliminar este post");
-      if (opcion == true) {
-        firebase.database().ref().child(`/user-posts/${userId}/${keyPost}`).remove();
-        firebase.database().ref().child(`posts/${keyPost}`).remove();
-        for (divDelete of divsDelete) {
-          divDelete.remove();
-        }
-      } else {
-        alert(":)");
-      }
-    });
-  }
+  btnDelete.addEventListener('click', () => {
+    const opcion = confirm("Deseaes eliminar este post");
+    if (opcion == true) {
+      firebase.database().ref().child(`/user-posts/${userId}/${keyPost}`).remove();
+      firebase.database().ref().child(`posts/${keyPost}`).remove();
+      divDelete.remove();
+    } else {
+      alert(":)");
+    }
+  });
+
+  like.addEventListener('click', () => {
+    tell.innerHTML++
+    const postData = {
+      uid: userId,
+      body: changePost.value,
+      key: keyPost,
+      like: tell.value++
+    };
+    firebase.database().ref().child(`/user-posts/${userId}/${keyPost}`).set(postData);
+    firebase.database().ref().child(`posts/${keyPost}`).set(postData);
+  });
+
+  divDelete.appendChild(changePost);
+  divDelete.appendChild(tab);
+  divDelete.appendChild(tell);
+  divDelete.appendChild(like);
+  divDelete.appendChild(btnUpdate);
+  divDelete.appendChild(btnUpdateSave);
+  divDelete.appendChild(btnDelete);
+  postL.appendChild(divDelete);
 }

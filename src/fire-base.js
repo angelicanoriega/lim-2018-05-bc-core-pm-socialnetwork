@@ -6,6 +6,7 @@ window.onload = () => {
           console.log('Inicio Logueado ')
           console.log(user.uid);
           returnData(user.uid);
+          
           login.classList.remove("hidden");
           logout.classList.add("hidden");
           visualImgFont.setAttribute("class", "hidden");

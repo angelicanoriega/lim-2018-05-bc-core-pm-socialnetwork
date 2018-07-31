@@ -1,3 +1,4 @@
+
 //botones de iniciar sesion;registro y salida
 const btnSignIn = document.getElementById("SignIn");
 const btnRegister = document.getElementById("register");

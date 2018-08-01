@@ -18,6 +18,9 @@
         <label class="icon-list" for="menu-profile"></label>
           <div class="profile-user">
             <p id="user_name"></p>
+            <br>
+            <p id="Only Me">Only Me</p>
+            <p id="WORLD">WORLD</p>
             <input type="button"  id="Logout" value="salir">
           </div>
       </div>
@@ -34,6 +37,7 @@
         <br>
         <div id="validation-Message">
         <input type="button" id="SignIn" value="Entrar">
+        <input type="button" id="anonimo" value="Entrar como anonimo">
         <br>
         <input type="button" id="google-SignIn" value="Google">
         <input type="button" id="facebook-SignIn" value="facebook">
@@ -69,8 +73,9 @@
         <input type="button" value="Publicar" id="btnSave">       
       </div>
       <div id="publications">
-        <h3>Publicación</h3>
+        <h3>Publicaciones:</h3>
         <div id="post-list"></div>
+        <div id="post-list-public" class="hidden"></div>
       </div>
     </section>
 

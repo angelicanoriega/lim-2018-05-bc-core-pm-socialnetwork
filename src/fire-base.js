@@ -2,17 +2,25 @@
 window.onload = () => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
+        console.log(user);
+        
         if (user.emailVerified === true) {
           console.log('Inicio Logueado ')
-          console.log(user.uid);
           returnData(user.uid);
-          
+          returnDataPublic(user.uid);
           login.classList.remove("hidden");
           logout.classList.add("hidden");
           visualImgFont.setAttribute("class", "hidden");
           wall.classList.remove("hidden");
         }
-  
+        if(user.isAnonymous === true){
+          login.classList.remove("hidden");
+          logout.classList.add("hidden");
+          visualImgFont.setAttribute("class", "hidden");
+          wall.classList.remove("hidden");
+          returnDataPublic(user.uid);
+
+        }
       }
       else {
         console.log('No esta logueado');
@@ -120,7 +128,17 @@ window.onload = () => {
         console.log(error.credential);
       });
   })
+  //enrar como anonimo
+  anonymus.addEventListener("click",()=>{
+   firebase.auth().signInAnonymously()
+   .catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ... 
+  })
   
+  });
   btnSave.addEventListener('click', () => {
   
     if (post.value.length !== 0 && post.value.trim() !== '') {

@@ -1,3 +1,5 @@
+//secion con anonymus
+const anonymus = document.getElementById("anonimo");
 
 //botones de iniciar sesion;registro y salida
 const btnSignIn = document.getElementById("SignIn");
@@ -19,6 +21,9 @@ const btnFacebookRegister = document.getElementById("facebook-register");
 //botones de ocutar y aparecer (iniciar secion  registrarse)
 const btnNewAccount = document.getElementById("newAccount-register");
 const btnReturn = document.getElementById("return");
+//botones para ocultar y aparecer los post publicos y privados
+const visualOnlyMe = document.getElementById("Only Me");
+const visualWorld = document.getElementById("WORLD");
 //varibles creadas para la visualizacion usando el css en html
 const login = document.getElementById("menu");
 const logout = document.getElementById("singIn-register");
@@ -26,6 +31,10 @@ const userName = document.getElementById("user_name");
 const register = document.getElementById("register");
 const singIn = document.getElementById("singIn");
 const visualImgFont = document.getElementById("imagen");
+
+const postL = document.getElementById("post-list");
+const postWorld = document.getElementById("post-list-public");
+
 const wall = document.getElementById('wall')
 const dataBase = document.getElementById('dataBase');
 const btnSave = document.getElementById('btnSave');
@@ -42,6 +51,19 @@ btnReturn.addEventListener("click", () => {
   register.setAttribute("class", "hidden");
   singIn.removeAttribute("class");
 })
+visualOnlyMe.addEventListener("click", () => {
+  postWorld.setAttribute("class", "hidden");
+  postL.removeAttribute("class");
+  dataBase.removeAttribute("class")
+
+})
+visualWorld.addEventListener("click", () => {
+  postL.setAttribute("class", "hidden");
+  postWorld.removeAttribute("class");
+  dataBase.setAttribute("class", "hidden");
+
+})
+
 
 //mostrando y ocultando contraseña
 const visualPaswordSI = document.getElementById('password-show');

@@ -87,7 +87,6 @@ const showData = (posts, keyPost, userId, likePost,dislikePost ) => {
   const seeWorld = document.createTextNode("see world");
   onlyWorld.appendChild(seeWorld);
 
-
   changePost.innerHTML = posts;
   let saveNumber = likePost;
   let saveDisNumber = dislikePost;
@@ -117,6 +116,7 @@ const showData = (posts, keyPost, userId, likePost,dislikePost ) => {
     firebase.database().ref().child(`posts/${keyPost}`).set(postData);
     
   });
+
 //borrar
   btnDelete.addEventListener('click', () => {
     const opcion = confirm("Deseaes eliminar este post");
@@ -218,6 +218,7 @@ const returnDataPublic = (uid) => {
     console.log(postGlobal);
     showWorld(uid,keyPost,postGlobal,likeGlobal,dislLikeGlobal);
   })
+
 }
 const showWorld=(userId,keyPost,postGlobal,likeGlobal,dislLikeGlobal)=>{
   

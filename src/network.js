@@ -70,7 +70,6 @@ const showData = (posts, keyPost, userId, likePost) => {
   btnpublic.setAttribute("value", "hacer publico");
   btnpublic.setAttribute("type", "button")
 
-
   changePost.innerHTML = posts;
   let saveNumber = likePost;
   tell.innerHTML=likePost;
@@ -95,6 +94,7 @@ const showData = (posts, keyPost, userId, likePost) => {
     firebase.database().ref().child(`/user-posts/${userId}/${keyPost}`).set(postData);
     firebase.database().ref().child(`posts/${keyPost}`).set(postData);
   });
+
 //borrar
   btnDelete.addEventListener('click', () => {
     const opcion = confirm("Deseaes eliminar este post");
@@ -151,6 +151,7 @@ const returnDataPublic = (uid) => {
     console.log(postGlobal);
     showWorld(uid,keyPost,postGlobal,likeGlobal);
   })
+
 }
 const showWorld=(userId,keyPost,postGlobal,likeGlobal)=>{
   

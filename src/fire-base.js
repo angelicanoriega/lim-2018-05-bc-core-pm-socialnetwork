@@ -12,12 +12,16 @@ window.onload = () => {
           logout.classList.add("hidden");
           visualImgFont.setAttribute("class", "hidden");
           wall.classList.remove("hidden");
+          
         }
         if(user.isAnonymous === true){
           login.classList.remove("hidden");
           logout.classList.add("hidden");
           visualImgFont.setAttribute("class", "hidden");
           wall.classList.remove("hidden");
+          postL.setAttribute("class", "hidden");
+          postWorld.removeAttribute("class");
+          dataBase.setAttribute("class", "hidden");
           returnDataPublic(user.uid);
 
         }

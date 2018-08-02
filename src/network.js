@@ -35,9 +35,9 @@ const returnData = (uid) => {
   const userUbication = firebase.database().ref('users').child(uid);
   userUbication.on("value", snap => {
 
-    const listUserId = snap.val().userNickName;
-    userName.innerHTML = `Bienvenid@  ${listUserId}`;
-    console.log(listUserId);
+    const nameUserId = snap.val().userNickName;
+    userName.innerHTML = `Bienvenid@  ${nameUserId}`;
+    console.log(nameUserId);
 
     const postUbication = firebase.database().ref('user-posts').child(uid);
     postUbication.on("child_added", snap => {
@@ -45,24 +45,20 @@ const returnData = (uid) => {
       const key = snap.val().key;
       const numLike = snap.val().like;
       const numDisLike=snap.val().dislike;
-      showData(listPost, key, uid, numLike,numDisLike);
+      console.log(nameUserId);
+      showData( uid,key,listPost, numLike,numDisLike,nameUserId);
     });
   })
 }
 //pintar datos post privados
-const showData = (posts, keyPost, userId, likePost,dislikePost ) => {
+const showData = ( userId, keyPost,posts, likePost,dislikePost,nameUserId ) => {
+
   const divDelete = document.createElement("div");
+  const nickUser=document.createElement("span");
+  const tabA = document.createElement("br")
   const tab = document.createElement("br")
   const changePost = document.createElement("textarea");
   changePost.setAttribute("disabled", "disabled");
-  const tellLike = document.createElement("span");
-  const like = document.createElement("input");
-  like.setAttribute("value", "Like");
-  like.setAttribute("type", "button"); 
-  const tellDisLike = document.createElement("span");
-  const disLike = document.createElement("input");
-  disLike.setAttribute("value", "DisLike");
-  disLike.setAttribute("type", "button");
   const btnUpdateSave = document.createElement("input");
   btnUpdateSave.setAttribute("value", "Guardar");
   btnUpdateSave.setAttribute("type", "button");
@@ -86,12 +82,19 @@ const showData = (posts, keyPost, userId, likePost,dislikePost ) => {
   onlyWorld.setAttribute("value", "world");
   const seeWorld = document.createTextNode("see world");
   onlyWorld.appendChild(seeWorld);
-
-  changePost.innerHTML = posts;
+  
+  nickUser.innerHTML=nameUserId;
   let saveNumber = likePost;
+  console.log("este es like post",likePost);
+  
   let saveDisNumber = dislikePost;
-  tellLike.innerHTML=likePost;
-  tellDisLike.innerHTML=dislikePost;
+  //el valor del like va ir cambiando en ambos lados segun corresponde :
+  firebase.database().ref(`user-posts`).child(userId).child(keyPost).on("value", snap => {
+    tellLike.innerHTML=snap.val().like;
+    tellDisLike.innerHTML=snap.val().dislike;
+    changePost.innerHTML = snap.val().body;
+
+  })
 
 //editar  
   btnUpdate.addEventListener('click', () => {
@@ -110,11 +113,19 @@ const showData = (posts, keyPost, userId, likePost,dislikePost ) => {
       key: keyPost,
       like: likePost,
       dislike:dislikePost,
+      name:nameUserId,
+
 
     };
     firebase.database().ref().child(`/user-posts/${userId}/${keyPost}`).set(postData);
     firebase.database().ref().child(`posts/${keyPost}`).set(postData);
+    firebase.database().ref(`user-posts-world`).child(keyPost).once('value', worldPost => {
+      if(worldPost.val()) {
+        firebase.database().ref().child(`user-posts-world/${keyPost}`).set(postData);
+      }
+    });
     
+
   });
 
 //borrar
@@ -129,41 +140,7 @@ const showData = (posts, keyPost, userId, likePost,dislikePost ) => {
       alert(":)");
     }
   });
-//likes
-  like.addEventListener('click', () => {
-    let number=saveNumber++
-    tellLike.innerHTML=number;
-    const postData = {
-      uid: userId,
-      body: changePost.value,
-      key: keyPost,
-      like: number,
-      dislike:dislikePost
 
-    };
-    firebase.database().ref().child(`/user-posts/${userId}/${keyPost}`).set(postData);
-    firebase.database().ref().child(`posts/${keyPost}`).set(postData);
-    firebase.database().ref().child(`/user-posts-world/${keyPost}`).set(postData);
-
-  });
- //Dislike
- disLike.addEventListener('click', () => {
-  let number=saveDisNumber++
-  tellDisLike.innerHTML=number;
-  const postData = {
-    uid: userId,
-    body: changePost.value,
-    key: keyPost,
-    like: likePost,
-    dislike:number
-
-  };
-  firebase.database().ref().child(`/user-posts/${userId}/${keyPost}`).set(postData);
-  firebase.database().ref().child(`posts/${keyPost}`).set(postData); 
-  firebase.database().ref().child(`/user-posts-world/${keyPost}`).set(postData);
-
-
-}); 
 //publicar 
     btnpublic.addEventListener("change",()=>{
       if(btnpublic.value==="world"){
@@ -174,7 +151,8 @@ const showData = (posts, keyPost, userId, likePost,dislikePost ) => {
           body: changePost.value,
           key: keyPost,
           like: likePost,
-          dislike:dislikePost
+          dislike:dislikePost,
+          name:nameUserId,
         };
         firebase.database().ref().child(`/user-posts-world/${keyPost}`).update(postData);
       }
@@ -190,12 +168,11 @@ const showData = (posts, keyPost, userId, likePost,dislikePost ) => {
         }
       }
   })
+  
+  divDelete.appendChild(nickUser);
+  divDelete.appendChild(tabA);
   divDelete.appendChild(changePost);
   divDelete.appendChild(tab);
-  divDelete.appendChild(tellLike);
-  divDelete.appendChild(like);
-  divDelete.appendChild(tellDisLike);
-  divDelete.appendChild(disLike);
   divDelete.appendChild(btnUpdate);
   divDelete.appendChild(btnUpdateSave);
   divDelete.appendChild(btnDelete);
@@ -209,23 +186,33 @@ const showData = (posts, keyPost, userId, likePost,dislikePost ) => {
 //llamar datos post publicos
 
 const returnDataPublic = (uid) => {
-  const postPublicWorld = firebase.database().ref().child("user-posts-world");
-  postPublicWorld.on("child_added", snap => {
-    const keyPost = snap.val().key;
-    const likeGlobal = snap.val().like;
-    const dislLikeGlobal = snap.val().dislike;
-    const postGlobal = snap.val().body;
-    console.log(postGlobal);
-    showWorld(uid,keyPost,postGlobal,likeGlobal,dislLikeGlobal);
-  })
 
+    
+
+    const postPublicWorld = firebase.database().ref().child("user-posts-world");
+    postPublicWorld.on("child_added", snap => {
+      const keyPost = snap.val().key;
+      const likeGlobal = snap.val().like;
+      const dislLikeGlobal = snap.val().dislike;
+      const postGlobal = snap.val().body;
+      const nameUserId=snap.val().name;
+      const otherUid=snap.val().uid;
+      console.log(postGlobal);
+      showWorld(uid,otherUid,keyPost,postGlobal,likeGlobal,dislLikeGlobal,nameUserId);
+    });
 }
-const showWorld=(userId,keyPost,postGlobal,likeGlobal,dislLikeGlobal)=>{
+const showWorld=(userId,otherUid,keyPost,postGlobal,likeGlobal,dislLikeGlobal,nameUserId)=>{
   
   const divDelete = document.createElement("div");
+  const nickUser=document.createElement("span");
+  const tabA = document.createElement("br")
+  const tabB = document.createElement("br")
   const tab = document.createElement("br")
   const changePost = document.createElement("textarea");
   changePost.setAttribute("disabled", "disabled");
+  const tell2 = document.createElement("input");
+  tell2.setAttribute("type", "text")
+  tell2.setAttribute("value",otherUid)
   const tell = document.createElement("span");
   const like = document.createElement("input");
   like.setAttribute("value", "Like");
@@ -234,26 +221,56 @@ const showWorld=(userId,keyPost,postGlobal,likeGlobal,dislLikeGlobal)=>{
   const disLike = document.createElement("input");
   disLike.setAttribute("value", "DisLike");
   disLike.setAttribute("type", "button");
-
-  changePost.innerHTML = postGlobal;
+  
+  nickUser.innerHTML=nameUserId;
   let saveNumber = likeGlobal;
+  tell2.innerHTML=otherUid;
+
+  console.log(tell2.value);
+
   let saveDisNumber = dislLikeGlobal;
-  tell.innerHTML=likeGlobal;
-  tellDisLike.innerHTML=dislLikeGlobal;
+  console.log('aaaaaaaaaaa', keyPost, likeGlobal)
+  //el valor del like va ir cambiando en ambos lados segun corresponde :
+  firebase.database().ref(`user-posts-world`).child(keyPost).on("value", snap => {
+    tell.innerHTML=snap.val().like;
+    tellDisLike.innerHTML=snap.val().dislike;
+    changePost.innerHTML = snap.val().body;
+  })
+
   //like global
   like.addEventListener('click', () => {
+    console.log(userId);
+    console.log(otherUid);
+
     let number=saveNumber++
-    tell.innerHTML=number;
+    console.log(number);
     const postData = {
       uid: userId,
       body: changePost.value,
       key: keyPost,
       like: number,
-      dislike:dislLikeGlobal
-    };
-    firebase.database().ref().child(`/user-posts/${userId}/${keyPost}`).set(postData);
+      dislike:dislLikeGlobal,
+      name:nameUserId,
+
+    }; 
+    const otherData = {
+      uid: otherUid,
+      body: changePost.value,
+      key: keyPost,
+      like: number,
+      dislike:dislLikeGlobal,
+      name:nameUserId,
+
+    }; 
     firebase.database().ref().child(`posts/${keyPost}`).set(postData);
     firebase.database().ref().child(`/user-posts-world/${keyPost}`).set(postData);
+    firebase.database().ref().child(`/user-posts/${tell2.value}/${keyPost}`).set(otherData);
+    firebase.database().ref(`user-posts`).child(userId).child(keyPost).once('value', worldPost => {
+      if(worldPost.val()) {
+        firebase.database().ref().child(`/user-posts/${userId}/${keyPost}`).set(postData);
+      }
+    });
+
   });
   //Dislike Global
   disLike.addEventListener('click', () => {
@@ -264,15 +281,24 @@ const showWorld=(userId,keyPost,postGlobal,likeGlobal,dislLikeGlobal)=>{
       body: changePost.value,
       key: keyPost,
       like: likeGlobal,
-      dislike:number
+      dislike:number,
+      name:nameUserId,
   
     };
-    firebase.database().ref().child(`/user-posts/${userId}/${keyPost}`).set(postData);
     firebase.database().ref().child(`posts/${keyPost}`).set(postData);
     firebase.database().ref().child(`/user-posts-world/${keyPost}`).set(postData);
+    firebase.database().ref(`user-posts`).child(userId).child(keyPost).once('value', worldPost => {
+      if(worldPost.val()) {
+        firebase.database().ref().child(`/user-posts/${userId}/${keyPost}`).set(postData);
+      }
+    });
 
   }); 
+  divDelete.appendChild(nickUser);
+  divDelete.appendChild(tabB);
 
+  divDelete.appendChild(tell2);
+  divDelete.appendChild(tabA);
   divDelete.appendChild(changePost);
   divDelete.appendChild(tab);
   divDelete.appendChild(tell);

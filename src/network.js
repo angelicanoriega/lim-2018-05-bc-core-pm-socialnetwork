@@ -78,11 +78,11 @@ const showData = ( userId, keyPost,posts, likePost,dislikePost,nameUserId ) => {
   wantSee.appendChild(wantSeeToday); 
   const onlyMe = document.createElement("option");
   onlyMe.setAttribute("value", "only me");
-  const seeMe = document.createTextNode("see me");
+  const seeMe = document.createTextNode("Privado");
   onlyMe.appendChild(seeMe);
   const onlyWorld = document.createElement("option");
   onlyWorld.setAttribute("value", "world");
-  const seeWorld = document.createTextNode("see world");
+  const seeWorld = document.createTextNode("Público");
   onlyWorld.appendChild(seeWorld);
   
   nickUser.innerHTML=nameUserId;

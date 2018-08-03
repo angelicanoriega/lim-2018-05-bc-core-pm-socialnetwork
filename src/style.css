@@ -147,7 +147,7 @@ span{
   font-size: 125%;
 }
 
-.validation-Message input, #wall input {
+.botton input, #wall input {
   border: none;
   background: #6FAB32;
   margin:8px;

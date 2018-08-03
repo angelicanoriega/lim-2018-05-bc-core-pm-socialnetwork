@@ -15,13 +15,15 @@ window.onload = () => {
           
         }
         if(user.isAnonymous === true){
+          console.log('Inicio Logueado ANONIMO ')
+
           login.classList.remove("hidden");
           logout.classList.add("hidden");
+          dataBase.setAttribute("class", "hidden");
           visualImgFont.setAttribute("class", "hidden");
           wall.classList.remove("hidden");
           postL.setAttribute("class", "hidden");
           postWorld.removeAttribute("class");
-          dataBase.setAttribute("class", "hidden");
           returnDataPublic(user.uid);
 
         }
@@ -95,6 +97,8 @@ window.onload = () => {
   
       })
       .catch((error) => {
+        console.log("email error");
+        
         // An error happened.
       });
   }

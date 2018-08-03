@@ -9,56 +9,57 @@
     <link rel="stylesheet" href="fonts.css">
   </head>
   <body>
-   <div> 
     <header> 
-     <div class="container">   
-      <h1 class="itsFood">It's Food</h1>
-      <div id="menu"class="hidden">
-        <input type="checkbox" id="menu-profile">
-        <label class="icon-list" for="menu-profile"></label>
-          <div class="profile-user">
-            <p id="user_name"></p>
-            <br>
-            <p id="Only Me">Only Me</p>
-            <p id="WORLD">WORLD</p>
-            <input type="button"  id="Logout" value="salir">
-          </div>
-      </div>
+      <div class="container">   
+        <h1 class="itsFood">It's Food</h1>
+        <div id="menu"class="hidden">
+          <input type="checkbox" id="menu-profile">
+          <label class="icon-list" for="menu-profile"></label>
+            <div class="profile-user">
+              <p id="user_name"></p>
+              <br>
+              <p id="Only Me">Mis publicaciones</p>
+              <p id="WORLD">Muro</p>
+              <input type="button"  id="Logout" value="salir">
+            </div>
+        </div>
       </div> 
     </header> 
      
     <section id="singIn-register">
-      <div id="singIn">
+      <div  id="singIn">
         <h2>Iniciar Sesión</h2>
-        <input type="email" id="email" placeholder="Correo Electrónico">
+        <input type="email" id="email" class="space" placeholder="Correo Electrónico">
         <br>
-        <input type="password" id="password" placeholder="Contraseña">
+        <input type="password" id="password" class="space" placeholder="Contraseña">
         <input type="checkbox" id="password-show">
         <br>
-        <div id="validation-Message">
-        <input type="button" id="SignIn" value="Entrar">
+        <div class="validation-Message">
+        <input type="button" id="SignIn" value="Iniciar Sesión">
+        <br>
+        <p class="fontsize-p">Pudes ingresar con</p>
         <input type="button" id="anonimo" value="Entrar como anonimo">
         <br>
-        <input type="button" id="google-SignIn" value="Google">
-        <input type="button" id="facebook-SignIn" value="facebook">
+        <input type="button" id="google-SignIn" value="G">
+        <input type="button" id="facebook-SignIn" value="f">
         <br>
         </div>
         <div id="validation-message"></div>
-        <p id="newAccount-register">Crear cuenta nueva</p>
+        <p id="newAccount-register" class="fontsize-p">O Crear una cuenta nueva</p>
       </div>
       <div id="register" class="hidden">
         <h2>Registrate</h2>
-        <input type="text" id="name-register" placeholder="Nombre Completo">
+        <input type="text" id="name-register" class="space" placeholder="Nombre Completo">
         <br>
-        <input type="text" id="nickName-register" placeholder="Nombre Usuario">
+        <input type="text" id="nickName-register" class="space" placeholder="Nombre Usuario">
         <br>
-        <input type="email" id="email-register" placeholder="Correo Electrónico">
+        <input type="email" id="email-register" class="space" placeholder="Correo Electrónico">
         <br>
-        <input type="password" id="password-register" placeholder="Contraseña">
+        <input type="password" id="password-register" class="space" placeholder="Contraseña">
         <input type="checkbox" id="password-register-show">
         <br>
-        <div id="validation-Message">
-        <input type="button" id="register" value="Registrarse">
+        <div class="validation-Message">
+        <input type="button" id="register-user" value="Registrarse">
         <br>
         <input type="button" id="return" value="Regresar">
         </div>

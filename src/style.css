@@ -5,20 +5,24 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
+
+body {
   font-family: 'Open Sans', sans-serif;
+  background: rgba(201, 200, 200, 0.116);
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
-.warning 
- 
-{ outline:0px;
+.warning { 
+  outline:0px;
   background-color:rgba(255, 0, 0, 0.5); 
   border-color: rgba(255, 0, 0);
+  margin:7%;
+  height:20px;
 }
+
 header {
   width: 100%;
   height: 100px;
@@ -29,24 +33,26 @@ header {
   left: 0;
   z-index: 100;
 }
+
 h1 {
-  font-size:50px;
+  font-size:300%;
   float: left;
   position:absolute;
   top:12px;
 }
 /* menu desplegable del css*/
-#menu-profile{
+#menu-profile {
   display: none;
 }
-header label{
+
+header label {
   float: right;
   font-size: 30px;
   margin:35px 0 ;
   cursor: pointer;
-
 }
-.profile-user{
+
+.profile-user {
   position: absolute;
   top:100px;
   left: 0;
@@ -56,17 +62,19 @@ header label{
   transition: all 0.5s;
   transform: translateX(-100%)
 }
-.profile-user p  {
+
+.profile-user p {
   display: block;
   color: #fff;
   height: 50px;
   text-decoration: none;
   padding: 15px;
 }
-#menu-profile:checked ~ .profile-user{
+
+#menu-profile:checked ~ .profile-user {
   transform: translateX(0%)
-  
 }
+
 #Logout {
   display: block;
   text-decoration: none;
@@ -78,65 +86,129 @@ header label{
   border-radius: 6px;
   border: 2px solid #7a0707;
 }
-header .container{
- text-align:center;
+
+header .container {
+  text-align:center;
   width:85% ;
   margin: auto;
   display: table;
 }
-section{
-  
+
+section {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-    
+  -webkit-transform: translate(-50%, -50%);  
 }
 
-img{
+img {
   position: absolute;
   bottom: 0;
   width:100%;
   z-index: -100;
 }
 
-#singIn{
+#singIn, #register{
+  width: 130%;
+  position:relative;
+  font-size:10px;
+  text-align:center;
+  padding:9px;
+  padding-top:15px;
+  padding-bottom:15px;
+  border-radius: 10px;
+  background-color: rgba(188, 213, 33, 0.50);
+}
 
-  position:relative;
-  font-size:10px;
-  text-align:center;
-  padding:9px;
-  padding-top:15px;
-  padding-bottom:15px;
-  background-color: rgba(145, 145, 145, 0.20)
+h2 {
+  font-size: 250%;
 }
-#register{
-  position:relative;
-  font-size:10px;
-  text-align:center;
-  padding:9px;
-  padding-top:15px;
-  padding-bottom:15px;
-  background-color: rgba(145, 145, 145, 0.20)
+
+.space {
+  margin:7%;
+  height:20px;
 }
+
+#password, #password-register{
+  margin-left:6%;
+  margin-right:2%;
+}
+
 span{
   color: #db0d0d;
 }
+
 #newAccount-register{
   color: blue;
 }
-#validation-Message input{
-border: none;
-background: #6FAB32;
-margin:8px;
-color: #f2f2f2;
-padding: 4px;
-font-size: 10px;
-border-radius: 5px;
-position: relative;
+
+.fontsize-p {
+  font-size: 125%;
 }
-input{
-border: none;
-border-radius: 5px;
+
+.validation-Message input, #wall input {
+  border: none;
+  background: #6FAB32;
+  margin:8px;
+  color: #f2f2f2;
+  padding: 4%;
+  height: 35px;
+  position: relative;
 }
+
+input {
+  border: none;
+  border-radius: 5px;
+}
+
+#google-SignIn {
+  background-color: red;
+  width: 15%;
+  border-radius: 30px;
+}
+
+#facebook-SignIn {
+  background-color: blue;
+  width: 15%;
+  border-radius: 20px;
+}
+
+textarea {
+  resize: none;
+}
+
+#wall {
+  height: 350px;     
+}
+
+#publications {
+  border-color: black;
+}
+
+#wall input {
+  margin: 2px;
+  padding: 2%;
+}
+
+#publications span {
+  color: black;
+  font-size: 90%;
+}
+
+#publications textarea {
+  width: 90%;
+  margin: 10px;
+  color: black;
+}
+
+#dataBase {
+  border-color: black;
+  margin: 20px;
+}
+
+.contents-post {
+  margin: 20px;
+  background-color: white;
+  width: 140%; 
+} 

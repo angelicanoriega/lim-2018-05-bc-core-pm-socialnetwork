@@ -12,12 +12,16 @@ window.onload = () => {
           logout.classList.add("hidden");
           visualImgFont.setAttribute("class", "hidden");
           wall.classList.remove("hidden");
+          
         }
         if(user.isAnonymous === true){
           login.classList.remove("hidden");
           logout.classList.add("hidden");
           visualImgFont.setAttribute("class", "hidden");
           wall.classList.remove("hidden");
+          postL.setAttribute("class", "hidden");
+          postWorld.removeAttribute("class");
+          dataBase.setAttribute("class", "hidden");
           returnDataPublic(user.uid);
 
         }
@@ -112,22 +116,22 @@ window.onload = () => {
       });
   })
   
-  //iniciar con facebook en iniciar sesion
-  btnFacebook.addEventListener("click", () => {
-    const provider = new firebase.auth.FacebookAuthProvider();
-    firebase.auth().signInWithPopup(provider)
-      .then((result) => {
-        console.log("ingrese con facebook");
-        const user = result.user;
-        writeUserData(user.uid, user.displayName, user.displayName, user.email, user.photoURL);
-      })
-      .catch((error) => {
-        console.log(error.code);
-        console.log(error.message);
-        console.log(error.email);
-        console.log(error.credential);
-      });
-  })
+  // //iniciar con facebook en iniciar sesion
+  // btnFacebook.addEventListener("click", () => {
+  //   const provider = new firebase.auth.FacebookAuthProvider();
+  //   firebase.auth().signInWithPopup(provider)
+  //     .then((result) => {
+  //       console.log("ingrese con facebook");
+  //       const user = result.user;
+  //       writeUserData(user.uid, user.displayName, user.displayName, user.email, user.photoURL);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.code);
+  //       console.log(error.message);
+  //       console.log(error.email);
+  //       console.log(error.credential);
+  //     });
+  // })
   //enrar como anonimo
   anonymus.addEventListener("click",()=>{
    firebase.auth().signInAnonymously()

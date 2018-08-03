@@ -16,7 +16,7 @@ const passwordRregister = document.getElementById("password-register");
 //botones de iniciar secion con google y facebook(aun si uso)
 const btnGoogle = document.getElementById("google-SignIn");
 const btnGoogleRegister = document.getElementById("google-register");
-const btnFacebook = document.getElementById("facebook-SignIn");
+// const btnFacebook = document.getElementById("facebook-SignIn");
 const btnFacebookRegister = document.getElementById("facebook-register");
 //botones de ocutar y aparecer (iniciar secion  registrarse)
 const btnNewAccount = document.getElementById("newAccount-register");

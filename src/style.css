@@ -168,11 +168,11 @@ input {
   border-radius: 30px;
 }
 
-#facebook-SignIn {
+/* #facebook-SignIn {
   background-color: blue;
   width: 15%;
   border-radius: 20px;
-}
+} */
 
 textarea {
   resize: none;

@@ -116,22 +116,22 @@ window.onload = () => {
       });
   })
   
-  //iniciar con facebook en iniciar sesion
-  btnFacebook.addEventListener("click", () => {
-    const provider = new firebase.auth.FacebookAuthProvider();
-    firebase.auth().signInWithPopup(provider)
-      .then((result) => {
-        console.log("ingrese con facebook");
-        const user = result.user;
-        writeUserData(user.uid, user.displayName, user.displayName, user.email, user.photoURL);
-      })
-      .catch((error) => {
-        console.log(error.code);
-        console.log(error.message);
-        console.log(error.email);
-        console.log(error.credential);
-      });
-  })
+  // //iniciar con facebook en iniciar sesion
+  // btnFacebook.addEventListener("click", () => {
+  //   const provider = new firebase.auth.FacebookAuthProvider();
+  //   firebase.auth().signInWithPopup(provider)
+  //     .then((result) => {
+  //       console.log("ingrese con facebook");
+  //       const user = result.user;
+  //       writeUserData(user.uid, user.displayName, user.displayName, user.email, user.photoURL);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.code);
+  //       console.log(error.message);
+  //       console.log(error.email);
+  //       console.log(error.credential);
+  //     });
+  // })
   //enrar como anonimo
   anonymus.addEventListener("click",()=>{
    firebase.auth().signInAnonymously()

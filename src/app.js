@@ -3,7 +3,7 @@ const anonymus = document.getElementById("anonimo");
 
 //botones de iniciar sesion;registro y salida
 const btnSignIn = document.getElementById("SignIn");
-const btnRegister = document.getElementById("register");
+const btnRegister = document.getElementById("register-user");
 const btnLogout = document.getElementById("Logout");
 //inputs email y pasword de iniciar sesión
 const email = document.getElementById("email");
@@ -16,7 +16,7 @@ const passwordRregister = document.getElementById("password-register");
 //botones de iniciar secion con google y facebook(aun si uso)
 const btnGoogle = document.getElementById("google-SignIn");
 const btnGoogleRegister = document.getElementById("google-register");
-const btnFacebook = document.getElementById("facebook-SignIn");
+// const btnFacebook = document.getElementById("facebook-SignIn");
 const btnFacebookRegister = document.getElementById("facebook-register");
 //botones de ocutar y aparecer (iniciar secion  registrarse)
 const btnNewAccount = document.getElementById("newAccount-register");
@@ -92,22 +92,22 @@ const validationMessageSI = document.getElementById("validation-message");
 1.- input para introduccion de correo*/
 email.addEventListener("keyup", () => {
   if (email.value.length <= 0) {
-    validationMessageSI.innerHTML = "<span>Completa el cuadro <strong>Email</strong></span>";
+    validationMessageSI.innerHTML = '<span class="fontsize-p">Completa el cuadro <strong>Email</strong></span>';
     email.setAttribute("class", "warning");
   } else {
     validationMessageSI.innerHTML = "<span></span>";
-    email.removeAttribute("class");
+    email.removeAttribute("class", "warning");
   }
 })
 
 /*2.- input para introduccion de contraseña*/
 password.addEventListener("keyup", () => {
   if (password.value.length <= 0) {
-    validationMessageSI.innerHTML = "<span>Completa el cuadro <strong>Pasword</strong></span>";
+    validationMessageSI.innerHTML = '<span class="fontsize-p">Completa el cuadro <strong>Pasword</strong></span>';
     password.setAttribute("class", "warning");
   } else {
     validationMessageSI.innerHTML = "<span></span>";
-    password.removeAttribute("class");
+    password.removeAttribute("class", "warning");
 
   }
 })
@@ -117,25 +117,25 @@ const validationMessage = document.getElementById("validation-messageR");
 /*mensajes de validacion del registro
 1.- input para introduccion de nombre completo*/
 nameRegister.addEventListener("mousemove", () => {
-  validationMessage.innerHTML = "<span>Completa este cuadro con tu nombre completo</span>";
+  validationMessage.innerHTML = '<span class="fontsize-p">Completa este cuadro con tu nombre completo</span>';
 })
 nameRegister.addEventListener("keyup", () => {
   if (nameRegister.value.length <= 0) {
-    validationMessage.innerHTML = "<span>Completa el cuadros de registro <strong>Nombre Completo</strong></span>";
+    validationMessage.innerHTML = '<span class="fontsize-p">Completa el cuadros de registro <strong>Nombre Completo</strong></span>';
     nameRegister.setAttribute("class", "warning");
   } else {
     validationMessage.innerHTML = "<span></span>";
-    nameRegister.removeAttribute("class");
+    nameRegister.removeAttribute("class", "warning");
 
   }
 })
 /*2.- input para introduccion de nombre de usuario*/
 nickNameRegister.addEventListener("mousemove", () => {
-  validationMessage.innerHTML = "<span>Completa este cuadro con un nombre de usuario a eleccion </span>";
+  validationMessage.innerHTML = '<span class="fontsize-p">Completa este cuadro con un nombre de usuario a eleccion </span>';
 })
 nickNameRegister.addEventListener("keyup", () => {
   if (nickNameRegister.value.length <= 0) {
-    validationMessage.innerHTML = "<span>Completa el cuadro de registro <strong>Nombre de Usuario</strong></span>";
+    validationMessage.innerHTML = '<span class="fontsize-p">Completa el cuadro de registro <strong>Nombre de Usuario</strong></span>';
     nickNameRegister.setAttribute("class", "warning");
   } else {
     validationMessage.innerHTML = "<span></span>";
@@ -144,11 +144,11 @@ nickNameRegister.addEventListener("keyup", () => {
 })
 /*3.- input para introduccion de email*/
 emailRegister.addEventListener("mousemove", () => {
-  validationMessage.innerHTML = "<span>Completa este cuadro con un email, ejemplo: <strong>miusuario@dominio.algo</strong> </span>";
+  validationMessage.innerHTML = '<span class="fontsize-p">Completa este cuadro con un email, ejemplo: <strong>miusuario@dominio.algo</strong> </span>';
 })
 emailRegister.addEventListener("keyup", () => {
   if (emailRegister.value.length <= 0) {
-    validationMessage.innerHTML = "<span>Completa el cuadro de registro <strong>Email</strong></span>";
+    validationMessage.innerHTML = '<span class="fontsize-p">Completa el cuadro de registro <strong>Email</strong></span>';
     emailRegister.setAttribute("class", "warning");
   } else {
     validationMessage.innerHTML = "<span></span>";
@@ -157,17 +157,17 @@ emailRegister.addEventListener("keyup", () => {
 })
 /*4.- input para introduccion de contraseña*/
 passwordRregister.addEventListener("mousemove", () => {
-  validationMessage.innerHTML = "<span>Completa este cuadro con una contraseña a elección </span>";
+  validationMessage.innerHTML = '<span class="fontsize-p">Completa este cuadro con una contraseña a elección </span>';
 })
 passwordRregister.addEventListener("keyup", () => {
   if (passwordRregister.value.length === 0) {
-    validationMessage.innerHTML = "<span>Completa el cuadro de registro <strong>Password</strong></span>";
+    validationMessage.innerHTML = '<span class="fontsize-p">Completa el cuadro de registro <strong>Contraseña</strong></span>';
     passwordRregister.setAttribute("class", "warning");
   } else if (passwordRregister.value.length <= 5) {
-    validationMessage.innerHTML = "<span>Completa el cuadro de registro <strong>Password</strong> con una contraseña de minimo 6 digitos</span>";
+    validationMessage.innerHTML = '<span class="fontsize-p">Completa el cuadro de registro <strong>Contraseña</strong> con una contraseña de minimo 6 digitos</span>';
     passwordRregister.setAttribute("class", "warning");
   } else {
     validationMessage.innerHTML = "<span></span>";
-    passwordRregister.removeAttribute("class");
+    passwordRregister.removeAttribute("class", "warning");
   }
 })

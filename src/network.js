@@ -55,6 +55,7 @@ const returnData = (uid) => {
 const showData = ( userId, keyPost,posts, likePost,dislikePost,nameUserId ) => {
 
   const divDelete = document.createElement("div");
+  divDelete.setAttribute("class", "contents-post");
   const nickUser=document.createElement("span");
   const tabA = document.createElement("br")
   const tab = document.createElement("br")
@@ -204,6 +205,7 @@ const returnDataPublic = (uid) => {
 const showWorld=(userId,otherUid,keyPost,postGlobal,likeGlobal,dislLikeGlobal,nameUserId)=>{
   
   const divDelete = document.createElement("div");
+  divDelete.setAttribute("class", "contents-post");
   divDelete.setAttribute("id", keyPost);
   const nickUser=document.createElement("span");
   const tabA = document.createElement("br")

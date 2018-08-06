@@ -111,7 +111,6 @@ window.onload = () => {
         console.log("ingrese con google");
         const user = result.user;
         writeUserData(user.uid, user.displayName, user.displayName, user.email, user.photoURL);
-        onload();
         
       })
       .catch((error) => {

@@ -1,12 +1,14 @@
 //pintar los datos iniciales del usuario
 const writeUserData = (userId, name, nickName, email, imageUrl) => {
-  firebase.database().ref(`users/${userId}`).set({
+  const userData={
     usersId: userId,
     userName: name,
     userNickName: nickName,
     email: email,
     profile_picture: imageUrl
-  });
+  }
+  firebase.database().ref(`users/${userId}`).set(userData);
+  return userData;
 }
 //pintar los post de los usuarios
 const writeNewPost = (uid, body) => {
@@ -187,9 +189,6 @@ const showData = ( userId, keyPost,posts, likePost,dislikePost,nameUserId ) => {
 //llamar datos post publicos
 
 const returnDataPublic = (uid) => {
-
-    
-
     const postPublicWorld = firebase.database().ref().child("user-posts-world");
     postPublicWorld.on("child_added", snap => {
       const keyPost = snap.val().key;
@@ -258,3 +257,10 @@ const showWorld=(userId,otherUid,keyPost,postGlobal,likeGlobal,dislLikeGlobal,na
   postWorld.appendChild(divDelete);
 
 };
+
+window.writeUserData = writeUserData;
+window.writeNewPost = writeNewPost;
+window.returnData = returnData;
+window.showData = showData;
+window.returnDataPublic = returnDataPublic;
+window.showWorld = showWorld;

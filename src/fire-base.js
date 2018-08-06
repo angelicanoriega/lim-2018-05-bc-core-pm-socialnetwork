@@ -112,6 +112,7 @@ window.onload = () => {
         const user = result.user;
         writeUserData(user.uid, user.displayName, user.displayName, user.email, user.photoURL);
         onload();
+        
       })
       .catch((error) => {
         console.log(error.code);

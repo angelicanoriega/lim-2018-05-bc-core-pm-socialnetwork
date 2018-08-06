@@ -20,4 +20,10 @@ describe('network', () => {
       it('debería exponer función showWorld en objeto global', () => {
         assert.isFunction(showWorld);
       });
+      describe('writeUserData (userId, name, nickName, email, imageUrl)', () => {
+        it('debería retornar un objeto', () => {
+            const data=writeUserData ("userId", "name", "nickName", "email", "imageUrl");
+            assert.equal(data.usersId,"userId");
+          });
+      });
     })

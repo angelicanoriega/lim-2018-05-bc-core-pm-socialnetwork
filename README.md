@@ -41,6 +41,8 @@ Las páginas con temas similares o iguales al nuestro fueron:
 2. En https://www.gallinablanca.es/recetas/ hay una opción de saber cual es tu peso ideal lo cual entretiene a lxs usuarixs, y le da más interés en la página.
 3. En estas páginas si bien Exponen recetas o notas Saludable no se centran en ellas.
 
+![Benchmarck](/imagenes-readme/plantilla-benchmark.PNG)
+
 #### Conclusión de datos:
 
 1. La página debe tener colores que den a entender desde el inicio de que se trata.
@@ -113,6 +115,7 @@ ingresar y conocer más acerca de nuestra red social.
 ## Proceso de diseño
 
 [Link prototipo móvil](https://www.figma.com/proto/D7cf3Wi4RllwGs65l24qEoPI/Untitled?node-id=41%3A298&scaling=min-zoom)
+
 [Link prototipo ordenador](https://www.figma.com/proto/bF81QIvIdKfAtjPhXmc8w3/Untitled-(Copy)?node-id=43%3A2&scaling=min-zoom)
 
 Al analizar el diseño de varias redes sociales muy visitadas diariamente comenzamos a pensar uno que había llamado la 

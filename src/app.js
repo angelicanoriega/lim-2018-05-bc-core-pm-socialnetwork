@@ -92,10 +92,9 @@ const validationMessageSI = document.getElementById("validation-message");
 1.- input para introduccion de correo*/
 email.addEventListener("keyup", () => {
   if (email.value.length <= 0) {
-    validationMessageSI.innerHTML = '<span class="fontsize-p">Completa el cuadro <strong>Email</strong></span>';
     email.setAttribute("class", "warning");
   } else {
-    validationMessageSI.innerHTML = "<span></span>";
+    validationMessageSI.innerHTML = "<p></p>";
     email.removeAttribute("class", "warning");
   }
 })
@@ -103,10 +102,9 @@ email.addEventListener("keyup", () => {
 /*2.- input para introduccion de contraseña*/
 password.addEventListener("keyup", () => {
   if (password.value.length <= 0) {
-    validationMessageSI.innerHTML = '<span class="fontsize-p">Completa el cuadro <strong>Pasword</strong></span>';
     password.setAttribute("class", "warning");
   } else {
-    validationMessageSI.innerHTML = "<span></span>";
+    validationMessageSI.innerHTML = "<p></p>";
     password.removeAttribute("class", "warning");
 
   }
@@ -117,38 +115,56 @@ const validationMessage = document.getElementById("validation-messageR");
 /*mensajes de validacion del registro
 1.- input para introduccion de nombre completo*/
 nameRegister.addEventListener("mousemove", () => {
-  validationMessage.innerHTML = '<span class="fontsize-p">Completa Nombre completo</span>';
+  if(nameRegister.value.length ===0 ){
+    validationMessage.innerHTML = "<p>Ingresa Nombre</p>";
+  }
+ else {
+  validationMessage.innerHTML = "<p></p>";
+  nameRegister.removeAttribute("class", "warning");
+ }
 })
 nameRegister.addEventListener("keyup", () => {
   if (nameRegister.value.length <= 0) {
-    validationMessage.innerHTML = '<span class="fontsize-p">Completa el cuadro de registro <br><strong>Nombre Completo</strong></span>';
     nameRegister.setAttribute("class", "warning");
   } else {
-    validationMessage.innerHTML = "<span></span>";
+    validationMessage.innerHTML = "<p></p>";
     nameRegister.removeAttribute("class", "warning");
 
   }
 })
 /*2.- input para introduccion de nombre de usuario*/
 nickNameRegister.addEventListener("mousemove", () => {
-  validationMessage.innerHTML = '<span class="fontsize-p">Completa Nombre usuario </span>';
+  if(nickNameRegister.value.length ===0){
+    validationMessage.innerHTML = "<p>Ingresa Nombre de usuario</p>";
+  }
+ else {
+  validationMessage.innerHTML = "<p></p>";
+  nickNameRegister.removeAttribute("class");
+}
 })
 nickNameRegister.addEventListener("keyup", () => {
   if (nickNameRegister.value.length <= 0) {
-    validationMessage.innerHTML = '<span class="fontsize-p">Completa el cuadro de registro <br><strong>Nombre de Usuario</strong></span>';
     nickNameRegister.setAttribute("class", "warning");
   } else {
-    validationMessage.innerHTML = "<span></span>";
+    validationMessage.innerHTML = "<p></p>";
     nickNameRegister.removeAttribute("class");
   }
 })
 /*3.- input para introduccion de email*/
 emailRegister.addEventListener("mousemove", () => {
-  validationMessage.innerHTML = '<span class="fontsize-p">Completa Email, ejemplo:<br> <strong>miusuario@dominio.algo</strong> </span>';
+ 
+
+  if (emailRegister.value.length <= 0) {
+    validationMessage.innerHTML = "<p>Email ejemplo:miusuario@dominio.algo</p>";
+  }  
+  else {
+    validationMessage.innerHTML = "<p></p>";
+    emailRegister.removeAttribute("class", "warning");
+  }
+  
 })
 emailRegister.addEventListener("keyup", () => {
   if (emailRegister.value.length <= 0) {
-    validationMessage.innerHTML = '<span class="fontsize-p">Completa el cuadro de registro<br> <strong>Email</strong></span>';
     emailRegister.setAttribute("class", "warning");
   } else {
     validationMessage.innerHTML = "<span></span>";
@@ -156,18 +172,24 @@ emailRegister.addEventListener("keyup", () => {
   }
 })
 /*4.- input para introduccion de contraseña*/
+
 passwordRregister.addEventListener("mousemove", () => {
-  validationMessage.innerHTML = '<span class="fontsize-p">Completa Contraseña </span>';
+ 
+
+  if (passwordRregister.value.length <= 0) {
+    validationMessage.innerHTML = "<p>Contraseña minimo 6 caracteres</p>";
+  }  
+  else {
+    validationMessage.innerHTML = "<p></p>";
+    passwordRregister.removeAttribute("class", "warning");
+  }
+  
 })
 passwordRregister.addEventListener("keyup", () => {
-  if (passwordRregister.value.length === 0) {
-    validationMessage.innerHTML = '<span class="fontsize-p">Completa el cuadro de registro <br><strong>Contraseña</strong></span>';
-    passwordRregister.setAttribute("class", "warning");
-  } else if (passwordRregister.value.length <= 5) {
-    validationMessage.innerHTML = '<span class="fontsize-p">Completa <strong>Contraseña</strong><br>  mínimo 6 digitos</span>';
+  if (passwordRregister.value.length <= 0) {
     passwordRregister.setAttribute("class", "warning");
   } else {
-    validationMessage.innerHTML = "<span></span>";
-    passwordRregister.removeAttribute("class", "warning");
+    passwordRregister.innerHTML = "<p></p>";
+    passwordRregister.removeAttribute("class");
   }
 })

@@ -7,6 +7,8 @@ window.onload = () => {
         if (user.emailVerified === true) {
           console.log('Inicio Logueado ')
           returnData(user.uid);
+          console.log(returnData);
+          
           returnDataPublic(user.uid);
           login.classList.remove("hidden");
           logout.classList.add("hidden");
@@ -43,24 +45,36 @@ window.onload = () => {
   //Registrando usuarios nuevos
   btnRegister.addEventListener("click", () => {
     firebase.auth().createUserWithEmailAndPassword(emailRegister.value, passwordRregister.value)
-      .then((result) => {
-  
-        console.log("me registro");
+        .then((result) => {
         console.log(nameRegister.value, nickNameRegister.value);
+        
+          console.log("me registro");
         const user = result.user;
         writeUserData(user.uid, nameRegister.value, nickNameRegister.value, user.email, user.photoURL);
         checkEmail();
         register.setAttribute("class", "hidden");
         singIn.removeAttribute("class");
         //url  aun no funciona
-  
-      })
+        ;})
+      
       .catch((error) => {
+        console.log(error);
+        if(error.code ==="auth/invalid-email" ){
+          validationMessage.innerHTML = "<span>Ingresa un email valido ejemplo:miusuario@dominio.algo</span>";
+        }
+        if(error.code ==="auth/weak-password"){
+          validationMessage.innerHTML = "<span>Completa <strong>Contraseña</strong><br>  mínimo 6 digitos</span>";
+        }
+        if(error.code ==="auth/email-already-in-use"){
+          validationMessage.innerHTML = "<span>Email ya en uso</span>";
+        }
+        
         // Handle Errors here.
         let errorCode = error.code;
         let errorMessage = error.message;
         // ...
       });
+ 
   })
   
   btnSignIn.addEventListener("click", () => {
@@ -72,13 +86,18 @@ window.onload = () => {
         onload();
       })
       .catch((error) => {
-        email.addEventListener("mousemove", () => {
-          validationMessageSI.innerHTML = "<span>Ingresa un email y/o contaseña valido</span>";
-        })
-        password.addEventListener("mousemove", () => {
-          validationMessageSI.innerHTML = "<span>Ingresa un email y/o contaseña valido</span>";
-        })
+        console.log(error);
+        console.log()
+        if(error.code ==="auth/invalid-email" ){
+          validationMessageSI.innerHTML = "<span>Ingresa un email valido </span>";
+        }
+        if(error.code ==="auth/wrong-password"){
+          validationMessageSI.innerHTML = "<span>Ingresa una contaseña valido</span>";
+        }
+        if(email.value.length===0 && password.value.length===0){
         validationMessageSI.innerHTML = "<span>Ingresa un email y/o contaseña valido</span>";
+
+        }
         // Handle Errors here.
         let errorCode = error.code;
         let errorMessage = error.message;

@@ -27,8 +27,8 @@ Se realizaron entrevistas a 6 posibles usuarixs, para ello se plantearon las sig
 
 ### Síntesis de las repsuestas
 
-Todas las personas entrevistadas estaban intersadas en informarse sobre alimentación saludable, 5 de 6 entrevistadxs 
-sabían en que cosistía una alimentación saludable además aseguraban tenerla, 3 de ellxs habían comenzado a preocuparse a 
+Todas las personas entrevistadas estaban interesadas en informarse sobre alimentación saludable, 5 de 6 entrevistadxs 
+sabían en que consistía una alimentación saludable además aseguraban tenerla, 3 de ellxs habían comenzado a preocuparse a 
 una edad muy temprana (12 - 17) por su alimentación para tener una mejor apariencia física y 2 por problemas de salud, 
 3 de ellxs eran o habían sido vegatarianx o veganx, las redes donde se informaban eran google, facebook, youtube, instagram 
 y pinterest,buscan tips, recetas y/o dietas para una mejor alimentación, les gutaría una red social de alimentación 
@@ -117,6 +117,8 @@ Después de realizar los sketch procedimos a testearlos con posibles usuarixs re
 interfaz, ya seguras que la interfaz era amigable para el usuario pasamos los sketch a prototipos de alta fidelidad.
 Primero la vista de móvil y luego para nevegador.
 
+
+
 #### Móvil
 
 ![Gif movil](/imagenes-readme/prototipo-de-alta-fidelidad-celular/Gif-prototipo-de-movil.gif)
@@ -124,3 +126,54 @@ Primero la vista de móvil y luego para nevegador.
 #### Navegador
 
 ![Gif navegador](/imagenes-readme/prototipo-alta-fidelidad-navegador/Gif-prototipo-de-navegador.gif)
+
+### Html
+
+El testing inicial  de la estructura de html fue desaprobado por los usuarios debido a que no se podia entender el fujo de lo que debian hacer para ingresar, lo cual fue modificado junto con su apariencia para que el usuario tuviera mas nocion de como debia era el flujo la red social.
+
+###  Cómo te asegurarás que estos usuarios usen este producto.
+ 
+ Se llamara la atencion de los usuario sobre la pagina wed atraves de las redes sociales de facebook, twiter ,etc para que los usuarios puedar ir animandoce a ingresar a nuestra red social.
+
+###  Cómo verificaste que el producto les está resolviendo sus problemas.
+
+Ya que las publicaciones de la red social esta unicamente enfocada en la comida saludable el usuario no se ve tentado con las recetas o fotos de comida altamente calorica evitandole la opcion de una comida poco saludable.
+
+### Cuáles son los elementos básicos que tiene una red social.
+
+1. Interacion entre usuarios
+2. Datos en realtime
+3. Compartimiento de informcion entre usuarios
+
+#### Benchmark
+las paginas con temas similares o iguales al nuestro fueron:
+
+(A)http://redsocialsaludable.com/ : de esta pagina sacamos:
+
+#Informacion destacada:
+
+
+1. Colores que no se relacionaban al tema
+1. Dificultad de encontrar los botones por no resaltar.
+
+(B)http://nibbledish.com/ , https://www.gallinablanca.es/recetas/ y http://www.diariamenteali.com/notas/saludable ; Estas paginas web si bien exponian sobre la salud alimentaria no se enfocaba en ella  o no tenian una seccion solo para la comida saludable.
+
+ 
+#Informacion destacada:
+
+1. Exponian los comentarios y las recetas mas populares.
+2. En https://www.gallinablanca.es/recetas/ hay una opcion de saber cual es tu peso ideal lo cual entretiene a los usuario, y le da mas interes en la pagina.
+3. En estas pagnas si bien Exponen recetas o notas Saludable nose centran en ellas.
+
+Conclusión de datos : 
+
+1. La pagina debe tener colores que den a entender desde el inicio de que se trata. 
+
+2. Mostrar de manera publica los datos mas destacados.
+Los votones o texto que llevan a algun evento deben destacar par evitar la confucion del usuario.
+
+3. Incluir una entretencion para el usuario relacionada con el tema en la red social.
+
+
+
+

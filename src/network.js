@@ -86,11 +86,22 @@ const showData = ( userId, keyPost,posts, likePost,dislikePost,nameUserId ) => {
   onlyWorld.setAttribute("value", "world");
   const seeWorld = document.createTextNode("Público");
   onlyWorld.appendChild(seeWorld);
-  
+
+
   nickUser.innerHTML=nameUserId;
   let saveNumber = likePost;
   console.log("este es like post",likePost);
-  
+
+  const postData = {
+    uid: userId,
+    body: changePost.value,
+    key: keyPost,
+    like: likePost,
+    dislike:dislikePost,
+    name:nameUserId,
+  };
+  console.log(postData);
+
   let saveDisNumber = dislikePost;
   //el valor del like va ir cambiando en ambos lados segun corresponde :
   firebase.database().ref(`user-posts`).child(userId).child(keyPost).on("value", snap => {
@@ -139,7 +150,6 @@ const showData = ( userId, keyPost,posts, likePost,dislikePost,nameUserId ) => {
       firebase.database().ref().child(`/user-posts-world/${keyPost}`).remove();
       divDelete.remove();
     } else {
-      alert(":)");
     }
   });
 
@@ -161,13 +171,12 @@ const showData = ( userId, keyPost,posts, likePost,dislikePost,nameUserId ) => {
       if(btnpublic.value==="only me"){
         console.log("hola e");
 
-        const opcion = confirm("Deseaes eliminar este post");
+        const opcion = confirm("Deseaes eliminar este post en el muro publico");
         if (opcion == true) {
         firebase.database().ref().child(`/user-posts-world/${keyPost}`).remove();
         document.getElementById(keyPost).remove();
 
         } else {
-          alert(":)");
         }
       }
   })
@@ -184,6 +193,9 @@ const showData = ( userId, keyPost,posts, likePost,dislikePost,nameUserId ) => {
   btnpublic.appendChild(onlyWorld);
   divDelete.appendChild(btnpublic);
   postL.appendChild(divDelete);
+  return postData;
+  console.log(postData);
+  
 }
 
 //llamar datos post publicos

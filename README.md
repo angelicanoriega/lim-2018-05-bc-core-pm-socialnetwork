@@ -112,6 +112,9 @@ ingresar y conocer más acerca de nuestra red social.
 
 ## Proceso de diseño
 
+[Link prototipo móvil](https://www.figma.com/proto/D7cf3Wi4RllwGs65l24qEoPI/Untitled?node-id=41%3A298&scaling=min-zoom)
+[Link prototipo ordenador](https://www.figma.com/proto/bF81QIvIdKfAtjPhXmc8w3/Untitled-(Copy)?node-id=43%3A2&scaling=min-zoom)
+
 Al analizar el diseño de varias redes sociales muy visitadas diariamente comenzamos a pensar uno que había llamado la 
 atención de lxs usuarxs para terminar el formulario de registro, dos ya logueadxs que era lo que más les llamaba la 
 atención del muro o la página de inicio y tres como preferían su interacción con otrxs usuarixs ("likes, chats, etc.").

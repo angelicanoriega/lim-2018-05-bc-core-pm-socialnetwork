@@ -91,6 +91,9 @@ window.onload = () => {
         if(error.code ==="auth/invalid-email" ){
           validationMessageSI.innerHTML = "<span>Ingresa un email valido </span>";
         }
+        if(error.code ==="auth/user-not-found" ){
+          validationMessageSI.innerHTML = "<span>Ingresa un email valido </span>";
+        }
         if(error.code ==="auth/wrong-password"){
           validationMessageSI.innerHTML = "<span>Ingresa una contaseña valido</span>";
         }

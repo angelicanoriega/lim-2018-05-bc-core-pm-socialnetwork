@@ -6,48 +6,28 @@ window.onload = () => {
         
         if (user.emailVerified === true) {
           console.log('Inicio Logueado ')
-          returnData(user.uid);
-          console.log(returnData);
-          
-          returnDataPublic(user.uid);
-          login.classList.remove("hidden");
-          logout.classList.add("hidden");
-          visualImgFont.setAttribute("class", "hidden");
-          wall.classList.remove("hidden");
-          
+         
+         window.location = 'post.html';
+          console.log(user);
+         
         }
         if(user.isAnonymous === true){
-          console.log('Inicio Logueado ANONIMO ')
 
-          login.classList.remove("hidden");
-          logout.classList.add("hidden");
-          dataBase.setAttribute("class", "hidden");
-          visualImgFont.setAttribute("class", "hidden");
-          wall.classList.remove("hidden");
-          postL.setAttribute("class", "hidden");
-          postWorld.removeAttribute("class");
-          returnDataPublic(user.uid);
+          window.location = 'post.html';
 
         }
       }
       else {
         console.log('No esta logueado');
-        login.classList.add("hidden");
-        logout.classList.remove("hidden");
-        register.setAttribute("class", "hidden");
-        singIn.removeAttribute("class");
-        visualImgFont.removeAttribute("class");
-        wall.classList.add("hidden");
+      
       }
     });
   }
   
-  //Registrando usuarios nuevos
+  // Registrando usuarios nuevos
   btnRegister.addEventListener("click", () => {
     firebase.auth().createUserWithEmailAndPassword(emailRegister.value, passwordRregister.value)
         .then((result) => {
-        console.log(nameRegister.value, nickNameRegister.value);
-        
           console.log("me registro");
         const user = result.user;
         writeUserData(user.uid, nameRegister.value, nickNameRegister.value, user.email, user.photoURL);
@@ -132,7 +112,7 @@ window.onload = () => {
       .then((result) => {
         console.log("ingrese con google");
         const user = result.user;
-        writeUserData(user.uid, user.displayName, user.displayName, user.email, user.photoURL);
+        // writeUserData(user.uid, user.displayName, user.displayName, user.email, user.photoURL);
         
       })
       .catch((error) => {
@@ -143,24 +123,9 @@ window.onload = () => {
       });
   })
   
-  // //iniciar con facebook en iniciar sesion
-  // btnFacebook.addEventListener("click", () => {
-  //   const provider = new firebase.auth.FacebookAuthProvider();
-  //   firebase.auth().signInWithPopup(provider)
-  //     .then((result) => {
-  //       console.log("ingrese con facebook");
-  //       const user = result.user;
-  //       writeUserData(user.uid, user.displayName, user.displayName, user.email, user.photoURL);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.code);
-  //       console.log(error.message);
-  //       console.log(error.email);
-  //       console.log(error.credential);
-  //     });
-  // })
-  //enrar como anonimo
-  anonymus.addEventListener("click",()=>{
+ 
+  //entrar como anonimo
+  anonimus.addEventListener("click",()=>{
    firebase.auth().signInAnonymously()
    .catch(function(error) {
     // Handle Errors here.
@@ -170,30 +135,3 @@ window.onload = () => {
   })
   
   });
-  btnSave.addEventListener('click', () => {
-  
-    if (post.value.length !== 0 && post.value.trim() !== '') {
-      const userId = firebase.auth().currentUser.uid;
-      const newPost = writeNewPost(userId, post.value);
-      post.value = '';
-    }
-    else {
-      alert("escribe un comentario")
-    }
-  })
-  
-  //salir de la cuenta del usuario
-  btnLogout.addEventListener('click', () => {
-    firebase.auth().signOut()
-      .then(() => {
-        console.log('Cerro Sesión');
-        login.classList.remove("hidden");
-        logout.classList.add("hidden");
-        register.setAttribute("class", "hidden");
-        singIn.removeAttribute("class");
-  
-      })
-      .catch((error) => {
-        console.log('Error al cerrar Sesión');
-      });
-  })

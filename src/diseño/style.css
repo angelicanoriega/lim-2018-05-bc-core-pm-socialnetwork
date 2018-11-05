@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Raleway');
+
+* {
+    font-family: 'Baloo Bhaijaan', cursive;
+    font-family: 'Raleway', sans-serif;
+}
+.menu{
+    width: 100%;
+    height: 100%;
+}
+h4:hover{
+
+    text-decoration: underline;
+
+}
+.hiddennav{
+    display: none;
+}
+.slider {
+    background: url(https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.card {
+    width: 25rem;
+}
+
+.navbar {
+    height: 50px;
+}
+
+.color {
+    background: rgb(13, 148, 18);
+    color: white;
+}
+
+label {
+    color: #A9A9A9;
+}
+
+input {
+    cursor: pointer;
+    width: 100%;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid rgba(207, 207, 207, 0.9);
+}
+
+.title {
+    font-size: 45px;
+    color: black;
+
+}
+
+.text {
+    cursor: pointer;
+    color: rgb(13, 148, 18);
+    text-decoration: underline;
+}
+
+h1 {
+    font-size: 35px;
+}
+
+.tamaño {
+    font-size: 10px;
+}
+.icon{
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid white;
+}
+.icon:hover{
+    background: white;
+   color: rgb(13, 148, 18);
+    border: 1px solid white;
+}
+.iconGooogle {
+    cursor: pointer;
+    font-size: 22px;
+    padding: 10px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+.iconGooogle:hover {
+    background: #db3236;
+    color: white;
+    border: 1px solid #db3236;
+
+}
+.iconIncognito{
+    cursor: pointer;
+    font-size: 23px;
+    padding-left: 10.5px;
+    padding-right: 10.5px;
+    padding-top: 9px;
+    padding-bottom:10px; 
+    border-radius: 50%;
+    border: 1px solid black; 
+}
+.iconIncognito:hover {
+    background: black;
+    color: white;
+    border: 1px solid black;
+
+}
+
+select {
+    width: 100%;
+}
+@media(max-width:760px){
+    
+    .center{
+        text-align: center;
+    }
+}

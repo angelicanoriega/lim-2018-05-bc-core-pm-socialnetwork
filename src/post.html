@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href='./muro/diseño/style.1.css'>
+
+    <title>It' Food</title>
+</head>
+
+<body>
+    <header>
+        <div class="menu container-fluid  ">
+            <div class="row">
+                <div class="col-12 col-md-12 fondo pt-2 pl-2 text-center d-flex justify-content-center align-items-center">
+                    <h3 class="display-4">It's Food</h3>
+                </div>
+                <div class="col-12 col-md-12 color hiddennav">
+                    <div class="row p-2">
+                        <div class="col-6 col-md-12 pt-1 d-flex justify-content-star pl-5">
+                            <h4 id="local"></h4>
+                        </div>
+                        <div id="iconM" class=" col-6  pt-2 d-flex justify-content-end align-items-center pr-4">
+                            <h3 class=" icon text-right fas fa-bars"></h3>
+                        </div>
+                    </div>
+                </div>
+                <div id="seeIyP" class="col-12 color  col-md-12 hiddennav2" value='variable'>
+                    <div class="row  color">
+                        <div class="col-12 col-sm-4 col-md-4 pt-3 text-center">
+                            <h4 id="btnYo">Yo</h4>
+                        </div>
+                        <div class="col-12 col-sm-4 col-md-4 pt-3 text-center">
+                            <h4 id="btnNosotros">Nosotr@s</h4>
+                        </div>
+                        <div class="col-12 col-sm-4 col-md-4 pt-2 text-center">
+                            <h4 id="Logout" class="btn btn-danger">Salir</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </header>
+    <section id="yo">
+        <div class="container-fluid  ">
+            <div class="row ">
+                <div class="col-md-3 colum  d-flex justify-content-center align-items-center ">
+                    <div class="row">
+                        <div class="text-center col-md-12">
+                            <i class="display-1   user fas fa-user"></i>
+                        </div>
+                        <div class="text-center pt-4 col-md-12">
+                            <h3 id="username">Nombre de usuario</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 space  d-flex justify-content-center align-items-center ">
+                    <div id="seeanonimo" class="row colum2 p-4">
+                        <div class="col-md-12  cuadro  ">
+                            <div class="row">
+                                <div class="col-md-12 pt-2 text-center">
+                                    <h5>Estado: <span id="valorDeEstado">Privado</span></h5>
+                                </div>
+                                <div class="col-md-12 pt-2">
+                                    <textarea id="post"></textarea>
+                                </div>
+                                <div class="col-6 col-md-6 pt-2">
+                                    <input id="publicar" type="button" value="Publicar">
+                                </div>
+                                <div id="btnEstadoPrivado" class="col-3 col-md-3 pt-2 text-center">
+                                    <h5 class="fas fa-user text"><span> Privado</span></h5>
+                                </div>
+                                <div id="btnEstadoPublico" class="col-3 col-md-3 pt-2 text-center">
+                                    <h5 class="fas fa-users text"><span> Público</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 p-2 hidden2 ">
+                            <div class="row">
+                                <div class="col-6 col-md-6 ">
+                                    <input id="btnPrivadoPost" type="button" value="privados">
+                                </div>
+                                <div class="col-6 col-md-6">
+                                    <input id="btnPublicoPost" type="button" value="públicos">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="seePrivado" class="col-sm-6 col-md-6 cuadro2 ">
+                            <div class="row">
+                                <div class="col-md-12 text-center pt-2">
+                                    <h5>Privado</h5>
+                                </div>
+                                <div  class="col-md-12 cuadro3">
+                                    <div id="post-list"class="row p-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="seePublico" class="col-sm-6 col-md-6 cuadro2 hiddennav2">
+                            <div class="row">
+                                <div class="col-md-12 text-center pt-2">
+                                    <h5>Público</h5>
+                                </div>
+                                <div class="col-md-12 cuadro3">
+                                    <div id="post-list-public"  class="row p-2 "></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section id="nosotros" class="hidden">
+        <div class="container-fluid  ">
+            <div class="row">
+                <div class="col-md-2 "></div>
+                <div class="col-md-8 space  d-flex justify-content-center align-items-center ">
+                    <div class="row colum2 p-4 ">
+                        <div class="col-md-12 cuadro4  ">
+                            <div class="row ">
+                                <div class="col-md-12  d-flex justify-content-center align-items-center p-2">
+                                        <h3 class="fas fa-users text"><span> Público</span></h3>
+                                    </div>
+
+                                <div class="col-md-12 ">
+                                    <div class="row  pl-5 pr-5">
+                                            <div class="col-md-12 cuadro5">
+                                                <div id="post-word" class="row p-2 "></div>
+                                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 "></div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="./muro/diseño/seepost.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  const config = {
+    apiKey: "AIzaSyD-77ZyY3Xr4WufiPLXx5qBQBH4Ha6ZBLU",
+    authDomain: "red-social-4956d.firebaseapp.com",
+    databaseURL: "https://red-social-4956d.firebaseio.com",
+    projectId: "red-social-4956d",
+    storageBucket: "red-social-4956d.appspot.com",
+    messagingSenderId: "702674464004"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="/lim-2018-05-bc-core-pm-socialnetwork/src/js/app.js"></script>
+<script src="/lim-2018-05-bc-core-pm-socialnetwork/src/js/network.js"></script>
+<script src="/lim-2018-05-bc-core-pm-socialnetwork/src/js/initClose.js"></script>
+
+</html>

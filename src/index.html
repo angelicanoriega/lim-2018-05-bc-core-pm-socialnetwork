@@ -1,105 +1,131 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Social Network</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
-    <link rel="stylesheet" href="fonts.css">
-  </head>
-  <body>
-    <header> 
-      <div class="container">   
-        <h1 class="itsFood">It's Food</h1>
-          <div id="menu" class="hidden">
-            <input type="checkbox" id="menu-profile">
-            <label class="icon-list" for="menu-profile"></label>
-              <div class="profile-user">
-                <p id="user_name"></p>
-                <br>
-                <p id="Only Me">Mis publicaciones</p>
-                <p id="WORLD">Muro</p>
-                <input type="button"  id="Logout" value="salir">
-              </div>
-          </div>
-      </div> 
-    </header> 
-     
-    <section id="singIn-register">
-      <div  id="singIn">
-        <h2>Iniciar Sesión</h2>
-        <div id="validation-message"></div>
+<html lang="en">
 
-        <input type="email" id="email" class="space" placeholder="Correo Electrónico">
-        <br>
-        <input type="password" id="password" class="space" placeholder="Contraseña">
-        <input type="checkbox" id="password-show">
-        <br>
-        <div class="botton">
-        <input type="button" id="SignIn" value="Iniciar Sesión">
-        <br>
-        <p class="fontsize-p">Pudes ingresar con</p>
-        <input type="button" id="anonimo" value="Entrar como anonimo">
-        <br>
-        <input type="button" id="google-SignIn" value="G">
-        <!-- <input type="button" id="facebook-SignIn" value="f"> -->
-        <br>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./diseño/style.css">
+
+    <title>It' Food</title>
+</head>
+
+<body>
+    <header class="color fixed-top ">
+        <div class="menu color  ">
+            <div class="row">
+                <div class="col-md-12  center ">
+                    <h3 class="pl-3 display-4">It's Food</h3>
+                </div>
+            </div>
         </div>
-        <p id="newAccount-register" class="fontsize-p">O Crear una cuenta nueva</p>
-      </div>
-      <div id="register" class="hidden">
-        <h2>Registrate</h2>
-        <div id="validation-messageR"></div>
-        <input type="text" id="name-register" class="space" placeholder="Nombre Completo">
-        <br>
-        <input type="text" id="nickName-register" class="space" placeholder="Nombre Usuario">
-        <br>
-        <input type="email" id="email-register" class="space" placeholder="Correo Electrónico">
-        <br>
-        <input type="password" id="password-register" class="space" placeholder="Contraseña">
-        <input type="checkbox" id="password-register-show">
-        <br>
-        <div class="botton">
-        <input type="button" id="register-user" value="Registrarse">
-        <br>
-        <input type="button" id="return" value="Regresar">
         </div>
-      </div>
+        </div>
+    </header>
+    <section id="logindisplay">
+        <div class="container-fluid pt-5 slider d-flex justify-content-center align-items-center ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center ">
+                        <h3 class="pt-3 title">Iniciar Sesión</h1>
+                    </div>
+                </div>
+                <div class="col-md-12 pt-3 d-flex justify-content-center align-items-center">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-md-12 pt-3">
+                                    <input id="email" type="text" class="p-1" id="email_login" placeholder="Correo">
+                                </div>
+                                <div class="col-md-12 pt-4">
+                                    <input id="password" type="password" class="p-1" id="passwordLogin" placeholder="Contraseña"
+                                        required>
+                                </div>
+                                <div class="col-md-12 pt-5 ">
+                                    <input id="SignIn" type="button" value="INGRESAR" id="login" class="p-1 btn color">
+                                </div>
+                                <div class="col-md-12 pt-4 text-center">
+                                    <div class="row">
+                                        <div class="col-6 col-md-6">
+                                            <i id="google-SignIn" class="fab fa-google iconGooogle"></i>
+                                            <p class="tamaño">Google</p>
+                                        </div>
+                                        <div class="col-6 col-md-6">
+                                            <i id="anonimo" class="fas fa-user-secret iconIncognito"></i>
+                                            <p class="tamaño ">incognito</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 pt-1 text-center ">
+                                    <p class="title tamaño">¿Primera vez aquí?<span class="text" id="seeRegister">CREAR
+                                            CUENTA</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    
-    <section id="wall"  class="hidden">
-      <div id="dataBase">
-        <textarea name="Publicación"  id="post"  cols="30"  rows="10"></textarea>
-        <br>
-        <input type="button" value="Publicar" id="btnSave">       
-      </div>
-      <div id="publications">
-        <h3>Publicaciones:</h3>
-        <div id="post-list"></div>
-        <div id="post-list-public" class="hidden"></div>
-      </div>
+    <section id="registerdisplay" class="hidden">
+        <div class="container-fluid pt-5 slider d-flex justify-content-center align-items-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center ">
+                        <h3 class="pt-3 title">Crear Cuenta</h1>
+                    </div>
+                </div>
+                <div class="col-md-12 pt-3 d-flex justify-content-center align-items-center">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-md-12 pt-3">
+                                    <input id="nickName-register" type="email" class="p-1" placeholder="Nombre de usuario" >
+                                </div>
+                                <div class="col-md-12 pt-3">
+                                    <input id="name-register" type="text" class="p-1" placeholder="Nombre completo" >
+                                </div>
+                                <div class="col-md-12 pt-3">
+                                    <input id="email-register" type="email" class="p-1" placeholder="Correo" >
+                                </div>
+                                <div class="col-md-12 pt-3">
+                                    <input id="password-register" type="password" class="p-1" placeholder="Contraseña">
+                                </div>
+                                <div class="col-md-12 pt-4 ">
+                                    <input id="register-user" type="button" value="Registrarse" class="p-1 btn color">
+                                </div>
+                                <div class="col-md-12 pt-4 text-center ">
+                                    <p class="title tamaño">¿Ya tienes cuenta?<span class="text" id="seeLogin">INICIAR
+                                            SESIÓN</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+</body>
+<script src="./diseño/see.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  const config = {
+    apiKey: "AIzaSyD-77ZyY3Xr4WufiPLXx5qBQBH4Ha6ZBLU",
+    authDomain: "red-social-4956d.firebaseapp.com",
+    databaseURL: "https://red-social-4956d.firebaseio.com",
+    projectId: "red-social-4956d",
+    storageBucket: "red-social-4956d.appspot.com",
+    messagingSenderId: "702674464004"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="/lim-2018-05-bc-core-pm-socialnetwork/src/js/app.js"></script>
+<script src="/lim-2018-05-bc-core-pm-socialnetwork/src/js/fire-base.js"></script>
+<script src="/lim-2018-05-bc-core-pm-socialnetwork/src/js/network.js"></script>
 
-    <footer id="imagen">
-     <img src="img/comida1.png" alt="imagen">
-    </footer>
-
-    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      const config = {
-        apiKey: "AIzaSyD-77ZyY3Xr4WufiPLXx5qBQBH4Ha6ZBLU",
-        authDomain: "red-social-4956d.firebaseapp.com",
-        databaseURL: "https://red-social-4956d.firebaseio.com",
-        projectId: "red-social-4956d",
-        storageBucket: "red-social-4956d.appspot.com",
-        messagingSenderId: "702674464004"
-      };
-      firebase.initializeApp(config);
-    </script>
-    <script src="app.js"></script>
-    <script src="network.js"></script>
-    <script src="fire-base.js"></script>
-  </body>
 </html>

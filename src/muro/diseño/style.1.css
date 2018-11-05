@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Raleway');
+
+* {
+    font-family: 'Baloo Bhaijaan', cursive;
+    font-family: 'Raleway', sans-serif;
+}
+
+h4:hover {
+
+    text-decoration: underline;
+
+}
+
+.hiddennav {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.color {
+    background: rgb(13, 148, 18);
+    color: white;
+}
+
+.user {
+    color: rgb(13, 148, 18);
+}
+
+.title {
+    font-size: 45px;
+    color: white;
+
+}
+
+.cuadro {
+    height: 150px;
+    -webkit-box-shadow: 0px 0px 67px 24px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 0px 67px 24px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 67px 24px rgba(0, 0, 0, 0.25);
+}
+
+.cuadro2 {
+    height: 200px;
+    -webkit-box-shadow: 0px 0px 67px 24px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 0px 67px 24px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 67px 24px rgba(0, 0, 0, 0.25);
+}
+
+.cuadro3 {
+    height: 150px;
+    overflow: auto;
+  
+}
+.cuadro4 {
+    height: 100%;
+    -webkit-box-shadow: 0px 0px 67px 24px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 0px 67px 24px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 67px 24px rgba(0, 0, 0, 0.25);    
+
+}
+.cuadro5 {
+    height: 310px;
+    overflow: auto;
+    -webkit-box-shadow: inset 3px 5px 20px 23px rgba(0,0,0,0.28);
+    -moz-box-shadow: inset 3px 5px 20px 23px rgba(0,0,0,0.28);
+    box-shadow: inset 3px 5px 20px 23px rgba(0,0,0,0.28);
+}
+
+.colum {
+    background: white;
+
+    height: 472px;
+}
+
+.space {
+    height: 472px;
+    background: rgb(8, 88, 10);
+}
+
+.colum2 {
+    width: 98%;
+    height: 95%;
+    background: white;
+}
+
+.fondo {
+    background: white;
+    background-size: cover;
+    background-position: center;
+    height: 100px;
+    width: 100%;
+    color: rgb(13, 148, 18);
+}
+
+input {
+    cursor: pointer;
+    width: 100%;
+    color: white;
+    border: none;
+    text-align: center;
+    background: rgb(13, 148, 18);
+}
+
+input:hover {
+
+    color: rgb(13, 148, 18);
+    border: 1px solid rgb(13, 148, 18);
+    text-align: center;
+    background: white;
+}
+
+.text:hover {
+    cursor: pointer;
+    color: rgb(13, 148, 18);
+}
+
+.hidden2 {
+    display: none;
+}
+
+textarea {
+    width: 100%;
+    min-height: 50px;
+    max-height: 50px;
+}
+
+@media(max-width:574px) {
+    .hidden2 {
+        display: block;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .hiddennav {
+        display: block;
+    }
+
+    .hiddennav2 {
+        display: none;
+    }
+
+    .text span {
+        display: none;
+    }
+}
+
+@media(max-width:767px) {
+
+    .colum {
+
+        background: white;
+        height: 230px;
+    }
+
+}

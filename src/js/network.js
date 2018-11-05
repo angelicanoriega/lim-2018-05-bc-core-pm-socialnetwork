@@ -335,7 +335,7 @@ const showDataPublic = (userId, keyPost, posts, likePost, dislikePost, nameUserI
   return postData;
 }
 
-const returnDataWorl = (uid) => {
+const returnDataWorl = (uid,estado) => {
   const postPublicWorld = firebase.database().ref().child("user-posts-world");
   postPublicWorld.on("value", snap => {
     const entre = Object.values(snap.val());
@@ -350,13 +350,13 @@ const returnDataWorl = (uid) => {
         console.log(userUid, userKey);
         firebase.database().ref('users').child(userUid).on("value", snap => {
           const userName = snap.val().userNickName;
-          showWorld(userUid, userKey, userName, userbody, userlike, userDislike);
+          showWorld(userUid, userKey, userName, userbody, userlike, userDislike,estado);
         })
       });
     });
   });
 }
-const showWorld = (uid, key, userName, postGlobal, userlike, userDislike) => {
+const showWorld = (uid, key, userName, postGlobal, userlike, userDislike,estado) => {
 
   const divDelete = document.createElement("div");
   divDelete.setAttribute("class", "col-md-12 border border-dark mt-2");
@@ -367,7 +367,13 @@ const showWorld = (uid, key, userName, postGlobal, userlike, userDislike) => {
   const div4 = document.createElement("div");
   div4.setAttribute("class", "col-md-12");
   const div5 = document.createElement("div");
-  div5.setAttribute("class", "col-md-12");
+
+  if(estado==='anonimo'){
+   div5.setAttribute("class", "col-md-12 hidden"); 
+  }
+  else{
+    div5.setAttribute("class", "col-md-12");
+  }
   const div6 = document.createElement("div");
   div6.setAttribute("class", "row");
   const div7 = document.createElement("div");

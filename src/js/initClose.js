@@ -7,11 +7,13 @@ window.onload = () => {
                 console.log('Inicio Logueado ')
                 returnData(user.uid,username);
                 returnDataPublic(user.uid,username);
-                returnDataWorl(user.uid);
+                returnDataWorl(user.uid,'usuario');
             }
             if (user.isAnonymous === true) {
                 console.log('Inicio Logueado ANONIMO ')
                 document.getElementById('seeanonimo').setAttribute('class', 'hidden');
+                returnDataWorl(user.uid,'anonimo');
+
 
 
             }

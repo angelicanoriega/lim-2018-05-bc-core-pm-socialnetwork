@@ -338,9 +338,14 @@ const showDataPublic = (userId, keyPost, posts, likePost, dislikePost, nameUserI
 const returnDataWorl = (uid,estado) => {
   const postPublicWorld = firebase.database().ref().child("user-posts-world");
   postPublicWorld.on("value", snap => {
+
     const entre = Object.values(snap.val());
+    console.log(entre);
+    
     entre.forEach(element => {
       const body = Object.values(element);
+      console.log(body);
+      
       body.forEach(element => {
         const userUid = element.uid;
         const userKey = element.key;
@@ -348,7 +353,10 @@ const returnDataWorl = (uid,estado) => {
         const userDislike = element.dislike;
         const userbody = element.body;
         console.log(userUid, userKey);
-        firebase.database().ref('users').child(userUid).on("value", snap => {
+        firebase.database().ref(`users`).child(userUid).on("value", snap => {
+          console.log(snap.val());
+          
+
           const userName = snap.val().userNickName;
           showWorld(userUid, userKey, userName, userbody, userlike, userDislike,estado);
         })
